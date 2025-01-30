@@ -10,9 +10,19 @@ import { useSearchParams , useRouter } from 'next/navigation';
 
 function Train() {
 
-    const errorSound = new Audio("/Error.mp3")
-    const correctSound = new Audio("/Correct.mp3")
-    const correctSound2 = new Audio("/Correct2.mp3")
+    const [errorSound , setErrorSound] = useState(null);
+    const [correctSound , setCorrectSound] = useState(null);
+    const [correctSound2 , setCorrectSound2] = useState(null);
+
+
+    useEffect(() => {
+        if (typeof window !== 'undefined' && typeof Audio !== 'undefined') {
+            setErrorSound(new Audio("/Error.mp3"));
+            setCorrectSound(new Audio("/Correct.mp3"));
+            setCorrectSound2(new Audio("/Correct2.mp3"));
+        }
+    }, []);
+
 
 
 
