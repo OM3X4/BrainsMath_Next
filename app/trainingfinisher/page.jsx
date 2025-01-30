@@ -2,7 +2,7 @@
 'use client'
 import React , { useState , useEffect} from 'react';
 import Link from 'next/link';
-import { useSearchParams , useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 const expressions = [
     "Nice Work",
@@ -40,7 +40,7 @@ function TrainFinisher() {
         const randomNumber = Math.floor(Math.random() * 20);
         setExpression(expressions[randomNumber]);
         setLink(search.get("link"))
-    });
+    } , []);
 
 
     return (

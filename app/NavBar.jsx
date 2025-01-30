@@ -1,5 +1,6 @@
 /* eslint-disable */
 'use client';
+import { Data } from './Data/Collary';
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
