@@ -1,5 +1,6 @@
 /* eslint-disable */
 'use client'
+import { Suspense } from 'react';
 import React, { useState, useEffect } from 'react';
 import { Data } from '../Data/Collary';
 import { useRouter , useSearchParams } from 'next/navigation';
@@ -147,6 +148,7 @@ function Practice() {
 
     return (
         <>
+        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
             {lesson ? <main className={`flex items-center justify-center h-[calc(80vh-5rem)]`}>
                 <div className="w-6/12 bg-slate-400 rounded-full h-4 dark:bg-gray-700 absolute top-20">
                     <div className="bg-green h-4 rounded-full transition-all" style={{ width: `${progress}%` }}></div>
@@ -204,6 +206,7 @@ function Practice() {
                     </div>
                 </div> :
                 ""}
+        </Suspense>
         </>
     );
 }
