@@ -63,8 +63,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-        <meta name="google-site-verification" content="FOpOxcY4cdYAblOfATnThANqE6F9SeY1NSiaV2yNxkI" />
-      </head>
+        <meta name="google-site-verification" content="qTSl8amExPj2IWekQ7YO0aeVOlRzeRo2KXfAxS3n880" />      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NavBar />
         {children}
