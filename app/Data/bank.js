@@ -8387,4 +8387,3 @@ export const bank = [
     ]
 ];
 
-console.log(JSON.stringify(bank))

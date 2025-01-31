@@ -949,4 +949,3 @@ export const Data = [
   }
 ];
 
-console.log(JSON.stringify(Data))
