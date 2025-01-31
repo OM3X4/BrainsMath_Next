@@ -8,8 +8,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaChartPie } from "react-icons/fa";
 import { FaLightbulb } from "react-icons/fa";
 import { MdOutlineCenterFocusStrong } from "react-icons/md";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 
@@ -67,18 +66,13 @@ function Home() {
         ]
     ]
 
-    useEffect(() => {
-        AOS.init({
-            duration: 400, // Animation duration in milliseconds
-            once: true,     // Whether animation should happen only once
-        });
-    }, []);
+
 
 
 
     return (
         <>
-            <header className="flex items-center justify-center flex-col p" data-aos="fade-up" data-aos-duration="500">
+            <header className="flex items-center justify-center flex-col p">
                 <div className="flex items-center justify-center flex-col">
                     <h1 className="text-navy text-[9rem] font-bold font-Mono">Learn</h1>
                     <h1 className="text-navy text-[9rem] font-bold font-Mono">Mental Math</h1>

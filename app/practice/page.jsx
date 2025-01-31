@@ -22,16 +22,7 @@ function PracticeContent() {
     const [correctSound , setCorrectSound] = useState(null);
     const [correctSound2 , setCorrectSound2] = useState(null);
 
-    const [Data , setData] = useState([])
 
-
-
-    useEffect(() => {
-        fetch("/Data/data.json")
-        .then(res => res.json())
-        .then(data => setData(data))
-        .catch(error => console.log("error fetching bank"))
-    } , [])
 
 
     useEffect(() => {
@@ -58,15 +49,28 @@ function PracticeContent() {
 
     const [startTime, setStartTime] = useState(performance.now())
     const [collectedData, setCollectedData] = useState([])
+    const [Data , setData] = useState([])
+
 
     const router = useRouter();
     const search = useSearchParams()
 
+
+
+
+
+    useEffect(() => {
+        fetch("/Data/Collary.json")
+        .then(res => {return res.json();})
+        .then(data => {return setData(data);})
+        .catch(error => console.log("error fetching bank" , error))
+    } , [])
+
     //no touch
     useEffect(() => {
         setCurrentLessonIndex(parseInt(search.get("index")))
-        setLesson(Data[parseInt(search.get("index"))])
-    }, [search])
+        setLesson(Data?.[parseInt(search.get("index"))])
+    }, [search , Data])
 
 
     // no touch
