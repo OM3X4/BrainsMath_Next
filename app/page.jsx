@@ -25,11 +25,14 @@ function Home() {
         if (storage) {
             let lesson = Data[parseInt(storage)];
             if (lesson.type == "practice") {
+                router.prefetch(`/practice?index=${storage}`)
                 router.push(`/practice?index=${storage}`);
             } else {
+                router.prefetch(`/lesson?index=${storage}`)
                 router.push(`/lesson?index=${storage}`);
             }
         } else {
+            router.prefetch(`/lesson?index=0`)
             router.push(`lesson?index=0`)
             localStorage.setItem("progress", 0)
         }

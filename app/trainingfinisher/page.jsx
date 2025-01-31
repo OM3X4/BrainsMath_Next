@@ -49,12 +49,12 @@ function TrainFinisherContent() {
         <div className='flex items-center justify-center flex-col h-[calc(100vh-5rem)]'>
             <h1 className=' text-8xl mb-10 font-bold font-Mono text-lightNavy'>{expression}</h1>
             <div className=' flex gap-5'>
-                <Link href={link}>
+                <Link href={link} prefetch={true}>
                     <div className='text-center mt-10 bg-green py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button '>
                         Repeat
                     </div>
                 </Link>
-                <Link href={"/"}>
+                <Link href={"/"} prefetch={true}>
                     <div className='text-center mt-10 bg-green py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button '>
                         Main Menu
                     </div>

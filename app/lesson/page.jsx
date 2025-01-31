@@ -130,13 +130,16 @@ function LessonContent() {
                 if (Data.length > currentLessonIndex + 1) {
                     correctSound2.play();
                     if (Data[currentLessonIndex + 1].type == "lesson") {
+                        router.prefetch(`/lessonfinisher?link=/lesson?index=${currentLessonIndex + 1}`)
                         router.push(`/lessonfinisher?link=/lesson?index=${currentLessonIndex + 1}`)
                     } else {
+                        router.prefetch(`/lessonfinisher?link=/practice?index=${currentLessonIndex + 1}`)
                         router.push(`/lessonfinisher?link=/practice?index=${currentLessonIndex + 1}`)
                     }
                     let LastProgress = parseInt(localStorage.getItem("progress"));
                     localStorage.setItem("progress", LastProgress + 1 || 0)
                 }else{
+                    router.prefetch('/cong')
                     router.push('/cong')
                 }
             }

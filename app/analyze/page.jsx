@@ -1,5 +1,6 @@
 /* eslint-disable */
 'use client'
+import { Suspense } from 'react';
 import React , {useEffect , useState} from 'react';
 import LineChart from './LineChart.jsx';
 import Link from 'next/link';
@@ -9,7 +10,7 @@ import Link from 'next/link';
 
 
 
-function Analytics() {
+function AnalyticsContent() {
 
 
     const [stored , setStored] = useState([])
@@ -170,6 +171,15 @@ function Analytics() {
         </div>
     </>
     );
+}
+
+function Analytics()
+{
+    return(
+        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
+            <AnalyticsContent />
+        </Suspense>
+    )
 }
 
 export default Analytics;

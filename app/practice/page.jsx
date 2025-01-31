@@ -97,11 +97,13 @@ function PracticeContent() {
                         let LastProgress = parseInt(localStorage.getItem("progress"));
                         localStorage.setItem("progress", LastProgress + 1 || 0);
                     } else {
+                        router.prefetch(`lessonfinisher?link=lesson?index=${currentLessonIndex + 1}`)
                         router.push(`lessonfinisher?link=lesson?index=${currentLessonIndex + 1}`)
                         let LastProgress = parseInt(localStorage.getItem("progress"));
                         localStorage.setItem("progress", LastProgress + 1 || 0);
                     }
                 }else{
+                    router.prefetch('/cong')
                     router.push('/cong')
                 }
             }
@@ -136,8 +138,11 @@ function PracticeContent() {
             setCollectedData(prev => [...prev, { question: lesson.content[currentContent], takenTime: (endTime - startTime), date: new Date(Date.now()), type: lesson.content[currentContent], isRight: false }])
             if (Data.length > currentLessonIndex + 1) {
                 if (Data[currentLessonIndex + 1].type == "practice") {
+
+                    router.prefetch(`/lessonfinisher?link=/practice?index=${currentLessonIndex + 1}`)
                     router.push(`/lessonfinisher?link=/practice?index=${currentLessonIndex + 1}`)
                 } else {
+                    router.prefetch(`/lessonfinisher?link=/lesson?index=${currentLessonIndex + 1}`)
                     router.push(`/lessonfinisher?link=/lesson?index=${currentLessonIndex + 1}`)
                 }
             }

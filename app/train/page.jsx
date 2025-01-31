@@ -97,6 +97,7 @@ function TrainContent() {
                 })
             }else{
                 saveProgress();
+                router.prefetch(`/trainingfinisher?link=/train?type=${search.get("type")}`)
                 router.push(`/trainingfinisher?link=/train?type=${search.get("type")}`)
                 correctSound2.play();
             }
@@ -130,6 +131,7 @@ function TrainContent() {
             saveProgress();
             const endTime = performance.now()
             setCollectedData(prev => [...prev , {question:questions[currentContent] , takenTime:(endTime - startTime) , date:new Date(Date.now()) , type:questions[currentContent] , isRight:false}])
+            router.prefetch(`/trainingfinisher?link=/train?type=${search.get("type")}`)
             router.push(`/trainingfinisher?link=/train?type=${search.get("type")}`)
         }
     }
