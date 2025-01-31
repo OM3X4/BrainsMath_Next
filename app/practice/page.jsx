@@ -16,7 +16,7 @@ const saveProgress = (collectedData) => {
 };
 
 
-function Practice() {
+function PracticeContent() {
 
     const [errorSound , setErrorSound] = useState(null);
     const [correctSound , setCorrectSound] = useState(null);
@@ -148,7 +148,6 @@ function Practice() {
 
     return (
         <>
-        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
             {lesson ? <main className={`flex items-center justify-center h-[calc(80vh-5rem)]`}>
                 <div className="w-6/12 bg-slate-400 rounded-full h-4 dark:bg-gray-700 absolute top-20">
                     <div className="bg-green h-4 rounded-full transition-all" style={{ width: `${progress}%` }}></div>
@@ -206,8 +205,16 @@ function Practice() {
                     </div>
                 </div> :
                 ""}
-        </Suspense>
         </>
+    );
+}
+
+function Practice()
+{
+    return (
+        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
+            <PracticeContent />
+        </Suspense>
     );
 }
 
