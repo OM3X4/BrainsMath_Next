@@ -2,7 +2,7 @@
 'use client'
 import { Suspense } from 'react';
 import React , { useState , useEffect} from 'react';
-import { bank } from '../Data/bank';
+// import bank from '../Data/bank.json';
 import { useSearchParams , useRouter } from 'next/navigation';
 
 
@@ -15,6 +15,22 @@ function TrainContent() {
     const [correctSound , setCorrectSound] = useState(null);
     const [correctSound2 , setCorrectSound2] = useState(null);
 
+    const [isLoading , setIsLoading] = useState(true)
+    const [bank , setBank] = useState([])
+
+    useEffect(() => {
+        if(bank.length){
+            setIsLoading(false)
+        }
+    } , [ bank ])
+
+    useEffect(() => {
+        fetch("/Data/bank.json")
+        .then(res => res.json())
+        .then(data => setBank(data))
+        .catch(error => console.log("error fetching bank"))
+    } , [])
+
 
     useEffect(() => {
         if (typeof window !== 'undefined' && typeof Audio !== 'undefined') {
@@ -23,6 +39,7 @@ function TrainContent() {
             setCorrectSound2(new Audio("/Correct2.mp3"));
         }
     }, []);
+
 
 
 
@@ -54,20 +71,22 @@ function TrainContent() {
 
     //no touch
     useEffect(() => {
-        setCurrentContent(0)
-        setProgress(0)
-        if(parseInt(search.get("type")) == 10){
-            let quizs = bank.flat();
-            quizs = quizs.sort(() =>  Math.random() - 0.5);
-            quizs = quizs.slice(0 , 5);
-            setQuestions(quizs);
-        }else{
-            let quizs = bank[parseInt(search.get("type"))];
-            quizs = quizs.sort(() =>  Math.random() - 0.5);
-            quizs = quizs.slice(0 , 5);
-            setQuestions(quizs);
+        if(!isLoading){
+            setCurrentContent(0)
+            setProgress(0)
+            if(parseInt(search.get("type")) == 10){
+                let quizs = bank.flat();
+                quizs = quizs.sort(() =>  Math.random() - 0.5);
+                quizs = quizs.slice(0 , 5);
+                setQuestions(quizs);
+            }else{
+                let quizs = bank[parseInt(search.get("type"))];
+                quizs = quizs.sort(() =>  Math.random() - 0.5);
+                quizs = quizs.slice(0 , 5);
+                setQuestions(quizs);
+            }
         }
-    } , [search])
+    } , [isLoading])
 
 
     // no touch
@@ -140,7 +159,12 @@ function TrainContent() {
 
     return (
     <>
-        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
+        {isLoading ?
+            <div className='w-[100%] h-1 bg-navy'>
+
+            </div>
+
+        :<Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
             {questions ? <div className={`flex items-center justify-center h-[calc(80vh-5rem)]`}>
                 <div className="w-6/12 bg-slate-400 rounded-full h-4 dark:bg-gray-700 absolute top-20">
                     <div className="bg-green h-4 rounded-full transition-all" style={{width: `${progress}%`}}></div>
@@ -198,7 +222,7 @@ function TrainContent() {
                 </div>
             </div>:
             ""}
-        </Suspense>
+        </Suspense>}
     </>
     );
 }

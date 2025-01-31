@@ -23,7 +23,8 @@ export const metadata = {
     "learn math fast",
     "speed math",
     "brain training",
-    "math exercises"
+    "math exercises",
+    "math"
   ],
   authors: [{ name: "BrainsMath Team" }],
   robots: "index, follow",
@@ -31,9 +32,9 @@ export const metadata = {
     title: "BrainsMath - Learn Mental Math Faster and Smarter",
     description: "Master mental math with BrainsMath. Learn quick calculation tricks and practice solving problems efficiently. Free for everyone!",
     type: "website",
-    url: "https://www.brainsmath.com",
+    url: "https://brainsmath.netlify.app",
     images: [{
-      url: "/og-image.png", // Replace with actual image URL
+      url: "https://brainsmath.netlify.app/Icons/Brains.png",
       width: 1200,
       height: 630,
       alt: "BrainsMath - Master Mental Math",
@@ -43,7 +44,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "BrainsMath - Learn Mental Math",
     description: "Get faster at math with BrainsMath. Free lessons and practice for improving mental math skills!",
-    images: ["/twitter-image.png"], // Replace with actual image URL
+    images: ["https://brainsmath.netlify.app/Icons/Brains.png"], // Replace with actual image URL
   },
 };
 
@@ -56,6 +57,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/Icons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/Icons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/Icons/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="image" content="https://brainsmath.netlify.app/Icons/Brains.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -947,13 +947,6 @@ export const Data = [
     ],
     "type": "practice"
   }
-
-
-
-
-
-
-
-
-
 ];
+
+console.log(JSON.stringify(Data))

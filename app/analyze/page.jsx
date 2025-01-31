@@ -51,7 +51,7 @@ function AnalyticsContent() {
                     data.length ? <LineChart data={data}/> : <h1 className=''>No Available Data</h1>
                 }
                 <Link href="/train?type=10">
-                    <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                    <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                         Train On This
                     </div>
                 </Link>
@@ -63,7 +63,7 @@ function AnalyticsContent() {
                         addition.length ? <LineChart data={addition}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=0"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>
@@ -74,7 +74,7 @@ function AnalyticsContent() {
                         subtraction.length ? <LineChart data={subtraction}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=1"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>
@@ -85,7 +85,7 @@ function AnalyticsContent() {
                         onetwo.length ? <LineChart data={onetwo}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=2"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>
@@ -96,7 +96,7 @@ function AnalyticsContent() {
                         twoMultp.length ? <LineChart data={twoMultp}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=3"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>
@@ -107,7 +107,7 @@ function AnalyticsContent() {
                         twothree.length ? <LineChart data={twothree}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=4"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>
@@ -118,7 +118,7 @@ function AnalyticsContent() {
                         threeMultp.length ? <LineChart data={threeMultp}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=5"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>
@@ -129,7 +129,7 @@ function AnalyticsContent() {
                         twosquare.length ? <LineChart data={twosquare}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=6"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>
@@ -140,7 +140,7 @@ function AnalyticsContent() {
                         threesquare.length ? <LineChart data={threesquare}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=7"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>
@@ -151,7 +151,7 @@ function AnalyticsContent() {
                         perfectroot.length ? <LineChart data={perfectroot}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=8"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>
@@ -162,7 +162,7 @@ function AnalyticsContent() {
                         nonperfectroot.length ? <LineChart data={nonperfectroot}/> : <h1 className=''>No Available Data</h1>
                     }
                     <Link href={"/train?type=9"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1 , true)}>
+                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
                             Train On This
                         </div>
                     </Link>

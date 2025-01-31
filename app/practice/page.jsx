@@ -2,7 +2,7 @@
 'use client'
 import { Suspense } from 'react';
 import React, { useState, useEffect } from 'react';
-import { Data } from '../Data/Collary';
+// import { Data } from '../Data/Collary';
 import { useRouter , useSearchParams } from 'next/navigation';
 
 const saveProgress = (collectedData) => {
@@ -21,6 +21,22 @@ function PracticeContent() {
     const [errorSound , setErrorSound] = useState(null);
     const [correctSound , setCorrectSound] = useState(null);
     const [correctSound2 , setCorrectSound2] = useState(null);
+
+    const [isLoading , setIsLoading] = useState(true)
+    const [Data , setData] = useState([])
+
+    useEffect(() => {
+        if(bank.length){
+            setIsLoading(false)
+        }
+    } , [ Data ])
+
+    useEffect(() => {
+        fetch("/Data/data.json")
+        .then(res => res.json())
+        .then(data => setData(data))
+        .catch(error => console.log("error fetching bank"))
+    } , [])
 
 
     useEffect(() => {
@@ -217,8 +233,9 @@ function PracticeContent() {
 function Practice()
 {
     return (
+
         <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
-            <PracticeContent />
+            {isLoading ? <div className='w-[100%] h-1 bg-navy'></div> : <PracticeContent />}
         </Suspense>
     );
 }
