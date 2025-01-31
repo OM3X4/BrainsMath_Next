@@ -230,7 +230,7 @@ function Practice()
     return (
 
         <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
-            <div className='w-[100%] h-1 bg-navy'></div> : <PracticeContent />
+            <PracticeContent />
         </Suspense>
     );
 }
