@@ -22,14 +22,9 @@ function PracticeContent() {
     const [correctSound , setCorrectSound] = useState(null);
     const [correctSound2 , setCorrectSound2] = useState(null);
 
-    const [isLoading , setIsLoading] = useState(true)
     const [Data , setData] = useState([])
 
-    useEffect(() => {
-        if(bank.length){
-            setIsLoading(false)
-        }
-    } , [ Data ])
+
 
     useEffect(() => {
         fetch("/Data/data.json")
@@ -235,7 +230,7 @@ function Practice()
     return (
 
         <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
-            {isLoading ? <div className='w-[100%] h-1 bg-navy'></div> : <PracticeContent />}
+            <div className='w-[100%] h-1 bg-navy'></div> : <PracticeContent />
         </Suspense>
     );
 }
