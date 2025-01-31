@@ -75,7 +75,7 @@ const HighlightText = (text) => {
 
 
 
-function Lesson() {
+function LessonContent() {
 
     const [errorSound , setErrorSound] = useState(null);
     const [correctSound , setCorrectSound] = useState(null);
@@ -215,6 +215,15 @@ function Lesson() {
                 ""}
         </Suspense>
         </>
+    );
+}
+
+function Lesson()
+{
+    return (
+        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
+            <LessonContent />
+        </Suspense>
     );
 }
 

@@ -9,7 +9,7 @@ import { useSearchParams , useRouter } from 'next/navigation';
 
 
 
-function Train() {
+function TrainContent() {
 
     const [errorSound , setErrorSound] = useState(null);
     const [correctSound , setCorrectSound] = useState(null);
@@ -198,6 +198,15 @@ function Train() {
             ""}
         </Suspense>
     </>
+    );
+}
+
+function Train()
+{
+    return (
+        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
+            <TrainContent />
+        </Suspense>
     );
 }
 

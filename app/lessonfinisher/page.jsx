@@ -31,7 +31,7 @@ const expressions = [
 
 
 
-function LessonFinisher() {
+function LessonFinisherContent() {
 
     const [expression , setExpression] = useState(null)
     const [link , setLink] = useState("")
@@ -57,6 +57,15 @@ function LessonFinisher() {
             </div>
         </Suspense>
     </>
+    );
+}
+
+function LessonFinisher()
+{
+    return (
+        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
+            <LessonFinisherContent />
+        </Suspense>
     );
 }
 

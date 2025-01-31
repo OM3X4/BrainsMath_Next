@@ -28,7 +28,7 @@ const expressions = [
 ];
 
 
-function TrainFinisher() {
+function TrainFinisherContent() {
 
 
     const search = useSearchParams()
@@ -61,6 +61,14 @@ function TrainFinisher() {
             </div>
         </div>
     </>
+    );
+}
+function TrainFinisher()
+{
+    return (
+        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
+            <TrainFinisherContent />
+        </Suspense>
     );
 }
 
