@@ -34,7 +34,7 @@ export const metadata = {
     type: "website",
     url: "https://brainsmath.netlify.app",
     images: [{
-      url: "https://brainsmath.netlify.app/Icons/Brains.png",
+      url: "https://brainsmath.netlify.app/Brains.png",
       width: 1200,
       height: 630,
       alt: "BrainsMath - Master Mental Math",
@@ -57,11 +57,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/Icons/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/Icons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/Icons/favicon-16x16.png" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-TileImage" content="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="image" content="https://brainsmath.netlify.app/Icons/Brains.png" />
+        <meta name="image" content="https://brainsmath.netlify.app/Brains.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -70,7 +72,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         <meta name="google-site-verification" content="qTSl8amExPj2IWekQ7YO0aeVOlRzeRo2KXfAxS3n880" />      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NavBar />
         {children}
       </body>
