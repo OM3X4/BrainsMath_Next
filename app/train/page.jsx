@@ -28,7 +28,7 @@ function TrainContent() {
         fetch("/Data/bank.json")
         .then(res => res.json())
         .then(data => setBank(data))
-        .catch(error => console.log("error fetching bank"))
+        .catch(error => console.log("error fetching bank" , error))
     } , [])
 
 
@@ -102,7 +102,9 @@ function TrainContent() {
         if(answer == choice){
             if(questions.length - 1 > currentContent){
                 const endTime = performance.now()
-                setCollectedData(prev => [...prev , {question:questions[currentContent] , takenTime:(endTime - startTime) , date:new Date(Date.now()) , type:questions[currentContent] , isRight:true}])
+                if(endTime - startTime < 30000){
+                    setCollectedData(prev => [...prev , {question:questions[currentContent] , takenTime:(endTime - startTime) , date:new Date(Date.now()) , type:questions[currentContent] , isRight:true}])
+                }
                 setProgress(c => c + ((1/questions.length) * 100))
                 correctSound.play();
                 setIsCorrectAnswer(true)
