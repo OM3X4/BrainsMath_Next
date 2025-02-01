@@ -13,43 +13,41 @@ import {
 
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Title);
 
-
 const LineChart = ({ data }) => {
-
-
-  // Calculate running average
+  // Calculate running average of time per question (in ms)
   const runningAverage = [];
-  let total = 0;
+  let totalTime = 0;
   data.forEach((item, index) => {
-    total += 60000 / item.takenTime;
-    runningAverage.push(total / (index + 1));
+    totalTime += item.takenTime; // takenTime assumed to be in milliseconds
+    runningAverage.push(Math.round(totalTime / (index + 1)));
   });
 
   // Chart.js data configuration
   const chartData = {
-    labels: data.map((item) => ""), // Dates on x-axis
+    labels: data.map(() => ""), // X-axis labels (e.g., dates) - customize as needed
     datasets: [
       {
-        label: "QPM (Test Results)",
-        data: data.map((item) => 60000 / item.takenTime), // Individual test WPM values
-        pointRadius: 2  ,
+        label: "Time per Question (ms)",
+        // Round each takenTime value to no decimals
+        data: data.map((item) => Math.round(item.takenTime)),
+        pointRadius: 2,
         pointBackgroundColor: "#139a34",
-        borderWidth: 0, // Points only, no line
+        borderWidth: 0, // Points only, no connecting line
         showLine: false, // Only show points
       },
       {
         label: "Running Average",
-        data: runningAverage, // Running average line
+        data: runningAverage,
         borderColor: "#122454",
         backgroundColor: "rgba(255, 255, 0, 0.1)", // Optional fill
-        tension: 0.5, // Smooth curve
+        tension: 0.5, // Smooth curve for the line
         fill: false,
-        borderWidth:1,
+        borderWidth: 1,
       },
     ],
   };
 
-  // Chart.js options
+  // Chart.js options configuration
   const options = {
     responsive: true,
     plugins: {
@@ -67,7 +65,7 @@ const LineChart = ({ data }) => {
       y: {
         title: {
           display: true,
-          text: "QPM (Questions Per Minute)",
+          text: "Time per Question (ms)",
         },
         beginAtZero: true,
       },
