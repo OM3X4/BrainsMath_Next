@@ -2,8 +2,8 @@
 'use client'
 import { Suspense } from 'react';
 import React , { useState , useEffect} from 'react';
-// import bank from '../Data/bank.json';
 import { useSearchParams , useRouter } from 'next/navigation';
+import {GenerateRandomQuestion} from "./DataCreator.js"
 
 
 
@@ -15,23 +15,7 @@ function TrainContent() {
     const [correctSound , setCorrectSound] = useState(null);
     const [correctSound2 , setCorrectSound2] = useState(null);
 
-    const [isLoading , setIsLoading] = useState(true)
-    const [bank , setBank] = useState([])
-
-    useEffect(() => {
-        if(bank.length){
-            setIsLoading(false)
-        }
-    } , [ bank ])
-
-    useEffect(() => {
-        fetch("/Data/bank.json")
-        .then(res => res.json())
-        .then(data => setBank(data))
-        .catch(error => console.log("error fetching bank" , error))
-    } , [])
-
-
+    //import sounds
     useEffect(() => {
         if (typeof window !== 'undefined' && typeof Audio !== 'undefined') {
             setErrorSound(new Audio("/Error.mp3"));
@@ -39,6 +23,13 @@ function TrainContent() {
             setCorrectSound2(new Audio("/Correct2.mp3"));
         }
     }, []);
+
+
+
+
+
+
+
 
 
     const [isButtonDisabled , setIsButtonDisabled] = useState(false)
@@ -66,24 +57,15 @@ function TrainContent() {
         }
     };
 
-    //no touch
+    //Generate Questions
     useEffect(() => {
-        if(!isLoading){
-            setCurrentContent(0)
-            setProgress(0)
-            if(parseInt(search.get("type")) == 10){
-                let quizs = bank.flat();
-                quizs = quizs.sort(() =>  Math.random() - 0.5);
-                quizs = quizs.slice(0 , 15);
-                setQuestions(quizs);
-            }else{
-                let quizs = bank[parseInt(search.get("type"))];
-                quizs = quizs.sort(() =>  Math.random() - 0.5);
-                quizs = quizs.slice(0 , 15);
-                setQuestions(quizs);
-            }
+        let questions = [];
+        for(let i = 0;i < parseInt(search.get("number")); i++){
+            questions.push(GenerateRandomQuestion(parseInt(search.get("digit1")) ,parseInt(search.get("digit2")) , parseInt(search.get("op")) ))
         }
-    } , [isLoading])
+        setQuestions(questions)
+    } , [])
+
 
 
     // no touch
@@ -114,9 +96,13 @@ function TrainContent() {
                     setIsButtonDisabled(false)
                 })
             }else{
+                const endTime = performance.now()
+                if(endTime - startTime < 30000){
+                    setCollectedData(prev => [...prev , {question:questions[currentContent] , takenTime:(endTime - startTime) , date:new Date(Date.now()) , type:questions[currentContent] , isRight:true}])
+                }
                 saveProgress();
-                router.prefetch(`/trainingfinisher?link=/train?type=${search.get("type")}`)
-                router.push(`/trainingfinisher?link=/train?type=${search.get("type")}`)
+                let currentURL = encodeURIComponent(window.location.href)
+                router.push(`/trainingfinisher?link=${currentURL}`)
                 correctSound2.play();
             }
         }else if(currentContent < questions.length - 1){
@@ -149,8 +135,8 @@ function TrainContent() {
             saveProgress();
             const endTime = performance.now()
             setCollectedData(prev => [...prev , {question:questions[currentContent] , takenTime:(endTime - startTime) , date:new Date(Date.now()) , type:questions[currentContent] , isRight:false}])
-            router.prefetch(`/trainingfinisher?link=/train?type=${search.get("type")}`)
-            router.push(`/trainingfinisher?link=/train?type=${search.get("type")}`)
+            let currentURL = encodeURIComponent(window.location.href)
+            router.push(`/trainingfinisher?link=${currentURL}`)
         }
     }
 
@@ -158,12 +144,7 @@ function TrainContent() {
 
     return (
     <>
-        {isLoading ?
-            <div className='w-[100%] h-1 bg-navy'>
-
-            </div>
-
-        :<Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
+        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
             {questions ? <div className={`flex items-center justify-center h-[calc(80vh-5rem)]`}>
                 <div className="w-6/12 bg-slate-400 rounded-full h-4 dark:bg-gray-700 absolute top-20">
                     <div className="bg-green h-4 rounded-full transition-all" style={{width: `${progress}%`}}></div>
@@ -221,7 +202,7 @@ function TrainContent() {
                 </div>
             </div>:
             ""}
-        </Suspense>}
+        </Suspense>
     </>
     );
 }

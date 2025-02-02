@@ -40,8 +40,9 @@ function TrainFinisherContent() {
     useEffect(() => {
         const randomNumber = Math.floor(Math.random() * 20);
         setExpression(expressions[randomNumber]);
-        setLink(search.get("link"))
+        setLink(decodeURIComponent(search.get("link")))
     } , []);
+
 
 
     return (
