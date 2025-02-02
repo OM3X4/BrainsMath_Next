@@ -41,9 +41,6 @@ function TrainContent() {
     }, []);
 
 
-
-
-
     const [isButtonDisabled , setIsButtonDisabled] = useState(false)
     const [questions , setQuestions] = useState(null)
     const [currentContent , setCurrentContent] = useState(0);
@@ -77,12 +74,12 @@ function TrainContent() {
             if(parseInt(search.get("type")) == 10){
                 let quizs = bank.flat();
                 quizs = quizs.sort(() =>  Math.random() - 0.5);
-                quizs = quizs.slice(0 , 5);
+                quizs = quizs.slice(0 , 15);
                 setQuestions(quizs);
             }else{
                 let quizs = bank[parseInt(search.get("type"))];
                 quizs = quizs.sort(() =>  Math.random() - 0.5);
-                quizs = quizs.slice(0 , 5);
+                quizs = quizs.slice(0 , 15);
                 setQuestions(quizs);
             }
         }
