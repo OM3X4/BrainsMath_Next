@@ -71,8 +71,31 @@ function TrainContent() {
     // no touch
     useEffect(() => {
         setStartTime(performance.now())
+        if(collectedData[0]){
+            // console.log(collectedData.reduce((sum , item) => sum + item.takenTime , 0))
+            console.log(collectedData)
+        }
     } , [currentContent])
 
+
+    function dataToSpeed(Data)
+    {
+        let sum = 0;
+        let number = 0;
+        for(let i = 0; i < Data.length; i++)
+        {
+            if(typeof Data[i].takenTime == "number")
+            {
+                sum += Data[i].takenTime;
+                number++;
+            }
+        }
+        console.log(number)
+        if(number > 0){
+            return sum / number;
+        }
+        return sum / number;
+    }
 
 
     function handleClick(choice , answer){
@@ -102,7 +125,7 @@ function TrainContent() {
                 }
                 saveProgress();
                 let currentURL = encodeURIComponent(window.location.href)
-                router.push(`/trainingfinisher?link=${currentURL}`)
+                router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}`)
                 correctSound2.play();
             }
         }else if(currentContent < questions.length - 1){
@@ -136,7 +159,7 @@ function TrainContent() {
             const endTime = performance.now()
             setCollectedData(prev => [...prev , {question:questions[currentContent] , takenTime:(endTime - startTime) , date:new Date(Date.now()) , type:questions[currentContent] , isRight:false}])
             let currentURL = encodeURIComponent(window.location.href)
-            router.push(`/trainingfinisher?link=${currentURL}`)
+            router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}`)
         }
     }
 

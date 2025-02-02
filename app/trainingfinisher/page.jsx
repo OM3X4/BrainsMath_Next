@@ -28,6 +28,26 @@ const expressions = [
     "Masterful"
 ];
 
+const getColor = (speed) => {
+    // Ensure speed is within the 0 to 20 range
+    const clampedSpeed = Math.min(Math.max(speed / 1000, 0), 20);
+
+    // Normalize speed to range between 0 and 1 (0 = green, 1 = red)
+    const normalizedSpeed = clampedSpeed / 20;
+
+    // Calculate the RGB color components
+    const red = Math.floor(normalizedSpeed * 255);  // red goes up as speed increases
+    const green = 255 - red;  // green goes down as speed increases
+
+    return `rgb(${red}, ${green}, 0)`;  // Smooth transition from green (0) to red (255)
+};
+
+
+function msToFormattedTime(ms) {
+    const seconds = Math.floor(ms / 1000);
+    const remainder = Math.floor((ms % 1000) / 10); // Convert to a 1/100 format
+    return `${seconds}:${remainder.toString().padStart(2, "0")}`;
+}
 
 function TrainFinisherContent() {
 
@@ -35,19 +55,27 @@ function TrainFinisherContent() {
     const search = useSearchParams()
     const [expression , setExpression] = useState(null)
     const [link , setLink] = useState("")
-
+    const [speed , setSpeed] = useState(0)
 
     useEffect(() => {
         const randomNumber = Math.floor(Math.random() * 20);
         setExpression(expressions[randomNumber]);
         setLink(decodeURIComponent(search.get("link")))
+        setSpeed(parseInt(search.get("speed")))
     } , []);
+
+    useEffect(() => {
+    })
 
 
 
     return (
     <>
         <div className='flex items-center justify-center flex-col h-[calc(100vh-5rem)]'>
+            <div className=' flex justify-center items-center gap-3'>
+                <h1 style={{color: getColor(speed)}} className='text-9xl font-mono font-black mb-10'>{msToFormattedTime(speed)}</h1>
+                <h6 className='text-lg font-Mono font-bold text-navy'>SPQ<span className='text-lightNavy text-[0.5rem]'>(Second Per Question)</span></h6>
+            </div>
             <h1 className=' text-8xl mb-10 font-bold font-Mono text-lightNavy'>{expression}</h1>
             <div className=' flex gap-5'>
                 <Link href={link} prefetch={true}>
