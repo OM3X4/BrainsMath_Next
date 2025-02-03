@@ -30,7 +30,7 @@ const expressions = [
 
 const getColor = (speed) => {
     // Ensure speed is within the 0 to 20 range
-    const clampedSpeed = Math.min(Math.max(speed / 1000, 0), 20);
+    const clampedSpeed = Math.min(Math.max(speed / 1000, 0), 12);
 
     // Normalize speed to range between 0 and 1 (0 = green, 1 = red)
     const normalizedSpeed = clampedSpeed / 20;
@@ -74,7 +74,7 @@ function TrainFinisherContent() {
         <div className='flex items-center justify-center flex-col h-[calc(100vh-5rem)]'>
             <div className=' flex justify-center items-center gap-3'>
                 <h1 style={{color: getColor(speed)}} className='text-9xl font-mono font-black mb-10'>{msToFormattedTime(speed)}</h1>
-                <h6 className='text-lg font-Mono font-bold text-navy'>SPQ<span className='text-lightNavy text-[0.5rem]'>(Second Per Question)</span></h6>
+                <h6 className='text-lg font-Mono font-bold text-navy'>SPQ<span className='text-lightNavy text-[0.5rem]'>(Second Per Question</span>)</h6>
             </div>
             <h1 className=' text-8xl mb-10 font-bold font-Mono text-lightNavy'>{expression}</h1>
             <div className=' flex gap-5'>
