@@ -72,7 +72,7 @@ function Home() {
 
     return (
         <>
-            <header className="flex items-center justify-center flex-col h-[calc(100vh-5rem)]">
+            <header className="flex items-center justify-center flex-col md:h-[calc(100vh-5rem)]">
                 <div className="flex items-center justify-center flex-col">
                     <h1 className="text-navy text-5xl md:text-8xl lg:text-[9rem] font-bold font-Mono">Learn</h1>
                     <h1 className="text-navy text-5xl md:text-8xl lg:text-[9rem] font-bold font-Mono">Mental Math</h1>
