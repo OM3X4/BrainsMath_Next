@@ -20,6 +20,16 @@
   before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat;
 }
 
+@layer components {
+  .custom-number-input::-webkit-outer-spin-button,
+  .custom-number-input::-webkit-inner-spin-button {
+    appearance: none;
+    background: red; /* Change the color */
+    width: 10px;
+    height: 10px;
+  }
+}
+
 .coin-button::before {
   animation: shimmer 2s linear infinite;
 }
