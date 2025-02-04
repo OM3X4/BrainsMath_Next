@@ -169,7 +169,7 @@ function TrainContent() {
     <>
         <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
             {questions ? <div className={`flex items-center justify-center h-[calc(80vh-5rem)]`}>
-                <div className="w-6/12 bg-slate-400 rounded-full h-4 dark:bg-gray-700 absolute top-20">
+                <div className="w-3/4 md:w-6/12 bg-slate-400 rounded-full h-4 dark:bg-gray-700 absolute top-20">
                     <div className="bg-green h-4 rounded-full transition-all" style={{width: `${progress}%`}}></div>
                 </div>
                 <div>
@@ -199,28 +199,25 @@ function TrainContent() {
             </div>
             :""}
             {isWrongAnswer?
-            <div className=" absolute bottom-10 w-1/4 left-1/2 -translate-x-1/2 flex items-center justify-center flex-col gap-5 p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">            <div className='flex items-center justify-center'>
+            <div className=" absolute bottom-10 md:w-1/4 left-1/2 -translate-x-1/2 flex items-center justify-center flex-col gap-5 p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">            <div className='flex items-center justify-center'>
                     <svg className="flex-shrink-0 inline w-7 h-7 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                     </svg>
                     <span className="sr-only">Info</span>
                     <div>
-                        <span className="font-medium text-2xl">Wrong Answer!</span>
+                        <span className="font-medium md:text-2xl">Wrong Answer!</span>
                     </div>
-                </div>
-                <div className='text-center  bg-red-800 py-2 px-3 text-white rounded-2xl text-sm shadow-[2px_2px_0_rgb(250,159,159)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1 , 1)}>
-                    Next
                 </div>
             </div>: ""}
             {isCorrectAnswer?
-            <div className=" absolute bottom-10 w-1/4 left-1/2 -translate-x-1/2 flex items-center justify-center flex-col gap-5 p-4 mb-4 text-sm text-emerald-600  border border-green rounded-lg" role="alert">
+            <div className=" absolute bottom-10 md:w-1/4 left-1/2 -translate-x-1/2 flex items-center justify-center flex-col gap-5 p-4 mb-4 text-sm text-emerald-600  border border-green rounded-lg" role="alert">
                 <div className='flex items-center justify-center'>
                     <svg className="flex-shrink-0 inline w-7 h-7 me-3 text-green" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                     </svg>
                     <span className="sr-only">Info</span>
                     <div>
-                        <span className="font-medium text-2xl text-green">Correct Answer!</span>
+                        <span className="font-medium md:text-2xl text-nowrap text-green">Correct Answer!</span>
                     </div>
                 </div>
             </div>:
