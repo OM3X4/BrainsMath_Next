@@ -125,8 +125,13 @@ function TrainContent() {
                 }
                 saveProgress();
                 let currentURL = encodeURIComponent(window.location.href)
-                router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}`)
                 correctSound2.play();
+                setProgress(c => c + ((1/questions.length) * 100))
+                setIsCorrectAnswer(true)
+                setTimeout(() => {
+                    setIsCorrectAnswer(false)
+                    router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}`)
+                } , 500)
             }
         }else if(currentContent < questions.length - 1){
             const endTime = performance.now()
@@ -154,12 +159,17 @@ function TrainContent() {
             } , 1500)
 
         }else{
-            correctSound2.play();
+            errorSound.play();
             saveProgress();
             const endTime = performance.now()
             setCollectedData(prev => [...prev , {question:questions[currentContent] , takenTime:(endTime - startTime) , date:new Date(Date.now()) , type:questions[currentContent] , isRight:false}])
             let currentURL = encodeURIComponent(window.location.href)
-            router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}`)
+            setProgress(c => c + ((1/questions.length) * 100))
+            setIsWrongAnswer(true)
+            setTimeout(() => {
+                setIsWrongAnswer(false)
+                router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}`)
+            } , 500)
         }
     }
 
