@@ -49,13 +49,28 @@ function TrainContent() {
 
     const saveProgress = () => {
         try {
+            let speed = dataToSpeed(collectedData);
+            let type = collectedData[0].question.type;
+            let date = new Date()
+            let digit1 = parseInt(search.get("digit1"))
+            let digit2 = parseInt(search.get("digit2"))
+
+            // Retrieve existing progress or initialize an empty array
             const existingData = JSON.parse(localStorage.getItem("collectedData") || "[]");
-            const mergedData = [...existingData, ...collectedData];
+
+            // Create the new progress object
+            const newProgress = { speed, type , date , digit1 , digit2 };
+
+            // Merge the new progress with existing data
+            const mergedData = [...existingData, newProgress];
+
+            // Save back to localStorage
             localStorage.setItem("collectedData", JSON.stringify(mergedData));
-            } catch (error) {
+        } catch (error) {
             console.error("Failed to save progress:", error);
         }
     };
+
 
     //Generate Questions
     useEffect(() => {
@@ -71,10 +86,6 @@ function TrainContent() {
     // no touch
     useEffect(() => {
         setStartTime(performance.now())
-        if(collectedData[0]){
-            // console.log(collectedData.reduce((sum , item) => sum + item.takenTime , 0))
-            console.log(collectedData)
-        }
     } , [currentContent])
 
 

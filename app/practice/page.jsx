@@ -5,15 +5,7 @@ import React, { useState, useEffect } from 'react';
 // import { Data } from '../Data/Collary';
 import { useRouter , useSearchParams } from 'next/navigation';
 
-const saveProgress = (collectedData) => {
-    try {
-        const existingData = JSON.parse(localStorage.getItem("collectedData") || "[]");
-        const mergedData = [...existingData, ...collectedData];
-        localStorage.setItem("collectedData", JSON.stringify(mergedData));
-    } catch (error) {
-        console.error("Failed to save progress:", error);
-    }
-};
+
 
 
 function PracticeContent() {
@@ -48,7 +40,6 @@ function PracticeContent() {
     const [isCorrectAnswer, setIsCorrectAnswer] = useState(false)
 
     const [startTime, setStartTime] = useState(performance.now())
-    const [collectedData, setCollectedData] = useState([])
     const [Data , setData] = useState([])
 
 
@@ -95,7 +86,6 @@ function PracticeContent() {
             correctSound.play()
             if (lesson.content.length - 1 > currentContent) {
                 const endTime = performance.now()
-                setCollectedData(prev => [...prev, { question: lesson.content[currentContent], takenTime: (endTime - startTime), date: new Date(Date.now()), type: lesson.content[currentContent], isRight: true }])
                 setProgress(c => c + ((1 / lesson.content.length) * 100))
                 setIsCorrectAnswer(true)
                 setTimeout(() => {
@@ -105,7 +95,6 @@ function PracticeContent() {
                 }, 1000)
             } else {
                 if (Data.length > currentLessonIndex + 1) {
-                    saveProgress(collectedData);
 
                     if (Data[currentLessonIndex + 1].type == "practice") {
                         setCurrentLessonIndex(prev => prev + 1);
@@ -133,7 +122,6 @@ function PracticeContent() {
                 ...lesson.content.slice(currentContent + 1), // Everything after currentContent
                 temp // Push the temp element to the end
             ];
-            setCollectedData(prev => [...prev, { question: lesson.content[currentContent], takenTime: (endTime - startTime), date: new Date(Date.now()), type: lesson.content[currentContent], isRight: false }])
 
 
 
@@ -150,7 +138,6 @@ function PracticeContent() {
         } else {
             correctSound2.play()
             let endTime = performance.now();
-            setCollectedData(prev => [...prev, { question: lesson.content[currentContent], takenTime: (endTime - startTime), date: new Date(Date.now()), type: lesson.content[currentContent], isRight: false }])
             if (Data.length > currentLessonIndex + 1) {
                 if (Data[currentLessonIndex + 1].type == "practice") {
 
