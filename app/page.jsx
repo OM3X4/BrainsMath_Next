@@ -75,9 +75,9 @@ function Home() {
         <>
             <header className="flex items-center justify-center flex-col md:h-[calc(100vh-5rem)]">
                 <div className="flex items-center justify-center flex-col">
-                    <h1 className='text-navy text-5xl md:text-8xl lg:text-[9rem] font-bold font-Mono text-center mb-5 w-[80%]'>
+                    <h1 className='text-navy text-5xl md:text-8xl lg:text-[9rem] font-bold font-Mono text-center mb-5 whitespace-pre-wrap'>
                         <Typewriter
-                            words={["Learn Mental Math"]}
+                            words={["Learn\nMental Math"]}
                             cursor
                             loop={1}
                             cursorStyle="_"
