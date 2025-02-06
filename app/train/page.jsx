@@ -1,5 +1,6 @@
 /* eslint-disable */
 'use client'
+import { FaUndoAlt } from "react-icons/fa";
 import { Suspense } from 'react';
 import React , { useState , useEffect} from 'react';
 import { useSearchParams , useRouter } from 'next/navigation';
@@ -71,14 +72,18 @@ function TrainContent() {
         }
     };
 
-
-    //Generate Questions
-    useEffect(() => {
+    function questionGen()
+    {
         let questions = [];
         for(let i = 0;i < parseInt(search.get("number")); i++){
             questions.push(GenerateRandomQuestion(parseInt(search.get("digit1")) ,parseInt(search.get("digit2")) , parseInt(search.get("op")) ))
         }
         setQuestions(questions)
+    }
+
+    //Generate Questions
+    useEffect(() => {
+        questionGen();
     } , [])
 
 
@@ -243,6 +248,16 @@ function TrainContent() {
                 </div>
             </div>:
             ""}
+            {/* repeat button */}
+            <div className='rounded-full size-16 bg-green absolute bottom-20 right-10 lg:hover:scale-125 lg:hover:bg-black group transition-all cursor-pointer flex items-center justify-center text-white text-3xl'
+                onClick={e => {
+                    questionGen();
+                    setCollectedData([]);
+                    setCurrentContent(0);
+                    setProgress(0)
+                }}>
+                <FaUndoAlt className="lg:group-hover:text-lightNavy transition-all"/>
+            </div>
         </Suspense>
     </>
     );
