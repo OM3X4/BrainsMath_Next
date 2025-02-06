@@ -1,5 +1,6 @@
 /* eslint-disable */
 'use client'
+import { Typewriter } from 'react-simple-typewriter';
 import { Data } from "./Data/Collary";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillYoutube } from "react-icons/ai";
@@ -74,8 +75,15 @@ function Home() {
         <>
             <header className="flex items-center justify-center flex-col md:h-[calc(100vh-5rem)]">
                 <div className="flex items-center justify-center flex-col">
-                    <h1 className="text-navy text-5xl md:text-8xl lg:text-[9rem] font-bold font-Mono">Learn</h1>
-                    <h1 className="text-navy text-5xl md:text-8xl lg:text-[9rem] font-bold font-Mono">Mental Math</h1>
+                    <h1 className='text-navy text-5xl md:text-8xl lg:text-[9rem] font-bold font-Mono text-center mb-5 w-[80%]'>
+                        <Typewriter
+                            words={["Learn Mental Math"]}
+                            cursor
+                            loop={1}
+                            cursorStyle="_"
+                            typeSpeed={70}
+                        />
+                    </h1>
                 </div>
                 <p className="text-sm md:text-xl lg:text-xl text-gray">Speed, Accuracy, and Confidence in Every Calculation!</p>
                 <button
@@ -111,7 +119,7 @@ function Home() {
                     <h2 className="text-navy text-4xl md:text-7xl font-bold">What Will You Learn?</h2>
                     <div className="flex items-center justify-center mt-20 gap-5">
                         <figure className="w-1/3 -ml-40 mr-10">
-                            <img src="/Brain3.png" alt="Brain training concept" className=""/>
+                            <img src="/Brain3.png" alt="Brain training concept" className="" />
                         </figure>
                         <div className="w-2/3">
                             <div className="flex items-center justify-around text-xl text-white bg-lightNavy mb-10 rounded-full py-5">
