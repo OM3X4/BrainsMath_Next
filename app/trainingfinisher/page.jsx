@@ -64,8 +64,7 @@ function TrainFinisherContent() {
         setSpeed(parseInt(search.get("speed")))
     } , []);
 
-    useEffect(() => {
-    })
+
 
 
 

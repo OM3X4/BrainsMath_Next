@@ -42,7 +42,7 @@ function LessonFinisherContent() {
         const randomNumber = Math.floor(Math.random() * 20);
         setExpression(expressions[randomNumber]);
         setLink(search.get("link"))
-    })
+    } , [])
 
     return (
     <>
