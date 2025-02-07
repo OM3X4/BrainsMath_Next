@@ -207,6 +207,225 @@ export const Data = [
     // 3 digits addition
     {
         content:[
+            {
+                numbers:"",
+                text:"In 3 Digits Addition , We Are Going to Divide it Into 1 digit addition and 2 digit addition which is easiar"
+            },
+            {
+                numbers:"583 + 327",
+                text:"Here We Are Going To **Divide** Them Into (500 + 300) + (80 + 20) + (3 + 7) Which Is 910"
+            },
+            {
+                numbers:"759 + 496",
+                text:"Solve This Now(Target Time 5s)",
+                answer: {
+                    choices:["1255" , "1355" , "1235" , "1055"],
+                    answer:"1255"
+                }
+            }
+        ],
+        type:"lesson",
+    },
+    {
+        content:[
+            {
+                question: "145 + 237",
+                choices: ["382", "384", "375", "383"].sort(() => Math.random() - 0.5),
+                answer: "382",
+                type: 0,
+            },
+            {
+                question: "568 + 432",
+                choices: ["1000", "999", "1001", "998"].sort(() => Math.random() - 0.5),
+                answer: "1000",
+                type: 0,
+            },
+            {
+                question: "723 + 486",
+                choices: ["1209", "1207", "1208", "1206"].sort(() => Math.random() - 0.5),
+                answer: "1209",
+                type: 0,
+            },
+            {
+                question: "859 + 141",
+                choices: ["998", "1000", "999", "1001"].sort(() => Math.random() - 0.5),
+                answer: "1000",
+                type: 0,
+            },
+            {
+                question: "332 + 781",
+                choices: ["1113", "1112", "1114", "1115"].sort(() => Math.random() - 0.5),
+                answer: "1113",
+                type: 0,
+            },
+
+        ],
+        type:"practice",
+    },
+    // Subtraction without borrowing
+    {
+        content:[
+            {
+                numbers:"",
+                text:"When Solving Subtraction Problems That doesnt have borrowing We Can Use The Same Method As Addition(**Left To Right Approach**)"
+            },
+            {
+                numbers:"86 - 25",
+                text:"In This Question (Which Doesnt Need Borrowing) We Can Distribute It To Be (80 - 20) + (6 - 5) = 61"
+            }
+        ],
+        type:"lesson",
+    },
+    {
+        content:[
+            {
+                question: "72 - 31",
+                choices: ["41", "42", "43", "40"].sort(() => Math.random() - 0.5),
+                answer: "41",
+                type: 1,
+            },
+            {
+                question: "156 - 42",
+                choices: ["114", "115", "116", "113"].sort(() => Math.random() - 0.5),
+                answer: "114",
+                type: 1,
+            },
+            {
+                question: "384 - 242",
+                choices: ["142", "141", "143", "140"].sort(() => Math.random() - 0.5),
+                answer: "142",
+                type: 1,
+            },
+            {
+                question: "253 - 132",
+                choices: ["121", "122", "120", "119"].sort(() => Math.random() - 0.5),
+                answer: "121",
+                type: 1,
+            },
+            {
+                question: "689 - 452",
+                choices: ["237", "238", "236", "239"].sort(() => Math.random() - 0.5),
+                answer: "237",
+                type: 1,
+            },
+            {
+                question: "512 - 230",
+                choices: ["282", "283", "281", "280"].sort(() => Math.random() - 0.5),
+                answer: "282",
+                type: 1,
+            },
+            {
+                question: "945 - 432",
+                choices: ["513", "514", "512", "515"].sort(() => Math.random() - 0.5),
+                answer: "513",
+                type: 1,
+            },
+            {
+                question: "623 - 114",
+                choices: ["509", "508", "510", "511"].sort(() => Math.random() - 0.5),
+                answer: "509",
+                type: 1,
+            },
+            {
+                question: "783 - 221",
+                choices: ["562", "563", "561", "560"].sort(() => Math.random() - 0.5),
+                answer: "562",
+                type: 1,
+            },
+            {
+                question: "871 - 645",
+                choices: ["226", "227", "225", "228"].sort(() => Math.random() - 0.5),
+                answer: "226",
+                type: 1,
+            },
+
+        ],
+        type:"practice",
+    },
+    // subtraction with borrowing
+    {
+        content:[
+            {
+                numbers:"",
+                text:"Before Going Into Subtraction With Borrowing You need To Master Complement To 100"
+            }
+        ],
+        type:"lesson",
+    },
+    {
+        content:[
+            {
+                question: "Complement of 243 to the nearest 100",
+                choices: ["57", "58", "59", "60"].sort(() => Math.random() - 0.5),
+                answer: "57",
+                type: 1,
+            },
+            {
+                question: "Complement of 378 to the nearest 100",
+                choices: ["22", "23", "24", "25"].sort(() => Math.random() - 0.5),
+                answer: "22",
+                type: 1,
+            },
+            {
+                question: "Complement of 651 to the nearest 100",
+                choices: ["49", "50", "51", "48"].sort(() => Math.random() - 0.5),
+                answer: "49",
+                type: 1,
+            },
+            {
+                question: "Complement of 823 to the nearest 100",
+                choices: ["77", "78", "79", "80"].sort(() => Math.random() - 0.5),
+                answer: "77",
+                type: 1,
+            },
+            {
+                question: "Complement of 174 to the nearest 100",
+                choices: ["26", "27", "28", "25"].sort(() => Math.random() - 0.5),
+                answer: "26",
+                type: 1,
+            },
+            {
+                question: "Complement of 689 to the nearest 100",
+                choices: ["11", "12", "10", "13"].sort(() => Math.random() - 0.5),
+                answer: "11",
+                type: 1,
+            },
+            {
+                question: "Complement of 439 to the nearest 100",
+                choices: ["61", "62", "63", "64"].sort(() => Math.random() - 0.5),
+                answer: "61",
+                type: 1,
+            },
+            {
+                question: "Complement of 157 to the nearest 100",
+                choices: ["43", "42", "41", "44"].sort(() => Math.random() - 0.5),
+                answer: "43",
+                type: 1,
+            },
+            {
+                question: "Complement of 295 to the nearest 100",
+                choices: ["5", "6", "7", "4"].sort(() => Math.random() - 0.5),
+                answer: "5",
+                type: 1,
+            },
+            {
+                question: "Complement of 512 to the nearest 100",
+                choices: ["88", "89", "90", "91"].sort(() => Math.random() - 0.5),
+                answer: "88",
+                type: 1,
+            },
+
+        ],
+        type:"lesson",
+    },
+    {
+        content:[
+
+        ],
+        type:"lesson",
+    },
+    {
+        content:[
 
         ],
         type:"lesson",
