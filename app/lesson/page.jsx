@@ -2,7 +2,7 @@
 'use client'
 import { Suspense } from 'react';
 import React, { useState, useEffect } from 'react';
-import { Data } from '../Data/Collary';
+import { Data } from '../Data/Collary2';
 import { useRouter ,useSearchParams } from 'next/navigation';
 
 
@@ -163,7 +163,7 @@ function LessonContent() {
                         {HighlightText(lesson.content[currentContent].numbers)}
                     </div>
                     {/* main text */}
-                    <div className={`max-w-[80%] mx-auto text-wrap text-center text-gray ${lesson.content[currentContent].numbers.length ? "text-2xl" : "text-5xl"}  `}>
+                    <div className={`max-w-[80%] mx-auto text-wrap text-center text-gray ${lesson.content[currentContent].numbers.length ? "text-2xl" : "text-5xl"}  ${lesson.content[currentContent].isQuote ? "italic " : ""}`} >
                         {renderTextWithBold(lesson.content[currentContent].text)}
                     </div>
                     {/* choice */}
@@ -184,8 +184,15 @@ function LessonContent() {
                                 </div>
                         }
                     </div>
+                    {
+                        /* More Buttons */
+                        lesson.content[currentContent].link ?
+                        <div className='flex items-center justify-center'>
+                            <button className='button mx-auto'>More Practice On This Exact Topic</button>
+                        </div>
+                        : ""
+                    }
                 </div>
-                {/* Draft */}
             </div> : ""}
             {isWrongAnswer ?
                 <div className="animate-slideDown absolute right-10 top-10 md:w-1/4 mx-auto flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">

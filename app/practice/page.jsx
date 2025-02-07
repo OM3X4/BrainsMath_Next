@@ -2,7 +2,7 @@
 'use client'
 import { Suspense } from 'react';
 import React, { useState, useEffect } from 'react';
-// import { Data } from '../Data/Collary';
+import {Data} from "../Data/Collary2"
 import { useRouter , useSearchParams } from 'next/navigation';
 
 
@@ -25,9 +25,6 @@ function PracticeContent() {
         }
     }, []);
 
-    // const errorSound = new Audio("/Error.mp3")
-    // const correctSound = new Audio("/Correct.mp3")
-    // const correctSound2 = new Audio("/Correct2.mp3")
 
 
 
@@ -40,7 +37,6 @@ function PracticeContent() {
     const [isCorrectAnswer, setIsCorrectAnswer] = useState(false)
 
     const [startTime, setStartTime] = useState(performance.now())
-    const [Data , setData] = useState([])
 
 
     const router = useRouter();
@@ -50,12 +46,16 @@ function PracticeContent() {
 
 
 
+    // useEffect(() => {
+    //     fetch("../Data/Collary2.json")
+    //     .then(res => {return res.json();})
+    //     .then(data => {return setData(data);})
+    //     .catch(error => console.log("error fetching bank" , error))
+    // } , [])
+
     useEffect(() => {
-        fetch("/Data/Collary.json")
-        .then(res => {return res.json();})
-        .then(data => {return setData(data);})
-        .catch(error => console.log("error fetching bank" , error))
-    } , [])
+        console.log(Data)
+    })
 
     //no touch
     useEffect(() => {
