@@ -1,7 +1,7 @@
 /* eslint-disable */
 'use client'
 import { Typewriter } from 'react-simple-typewriter';
-import { Data } from "./Data/Collary";
+import { Data } from "./Data/Collary2";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillYoutube } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
