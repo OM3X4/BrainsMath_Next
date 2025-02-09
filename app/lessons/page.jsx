@@ -1,11 +1,78 @@
 /* eslint-disable */
-import React from 'react';
+'use client'
+import { AiFillUnlock } from "react-icons/ai";
+import { AiFillLock } from "react-icons/ai";
+import React, { useEffect , useState } from 'react';
 import { ProgressBase } from './ProgressBase';
 import Link from 'next/link';
+import Loading from "../Loading";
+
+
+
+
 
 function Lessons() {
+
+    const [deniedSound , setDeniedSound] = useState(null);
+
+
+    useEffect(() => {
+        if (typeof window !== 'undefined' && typeof Audio !== 'undefined') {
+            setDeniedSound(new Audio("/denied2.mp3"));
+        }
+    }, []);
+
+
+    const [userData , setUserData] = useState([])
+    const [progress , setProgress] = useState(0)
+    const [isLoading , setIsLoading] = useState(true)
+
+    useEffect(() => {
+        let data = localStorage.getItem("collectedData")
+        setUserData(JSON.parse(data) || []);
+    }, [])
+
+
+    useEffect(() => {
+        let current = 0;
+        let data = [];
+        ProgressBase.map((unit) => {
+            data.push(unit.lessons)
+        })
+        data = data.flat();
+        for(const level of data)
+        {
+            if(level.targetSpeed == 0)
+            {
+                current++;
+            }else
+            {
+                let validTests = userData.filter((test) => {
+                    return (test.digit1 == level.digit1 && level.digit2 == level.digit2 && test.type == level.op && (test.speed / 1000) <= level.targetSpeed)
+                })
+                if(validTests.length >= 3)
+                {
+                    current++;
+                }else{
+                    break;
+                }
+            }
+        }
+        setProgress(current)
+        setIsLoading(false)
+    } , [userData])
+
+    useEffect(() => {
+        console.log(progress)
+    })
+
+
+
+
     return (
-    <>
+    isLoading ?
+    <Loading />
+    :<>
         <h1 className='text-center text-6xl font-Mono text-navy mb-5'>Learning Plan</h1>
         {/* stats */}
         <div className='flex items- justify-start w-[80%] mx-auto gap-3 mb-10'>
@@ -23,10 +90,25 @@ function Lessons() {
                                 {
                                     category.lessons.map((item) => {
                                         return(
-                                            <Link href={item.link}>
-                                                <div className='size-44 border-2 border-navy rounded-xl py-3 px-4 hover:scale-110 transition-all cursor-pointer flex flex-col justify-around hover:bg-navy group'>
-                                                    <h1 className='font-Mono text-4xl group-hover:text-white transition-all'>{item.index}</h1>
-                                                    <h1 className='self-center text-3xl font-semibold group-hover:text-white'>{item.img}</h1>
+                                            <Link href={item.link} onClick={(e) => {
+                                                if(item.index > progress){
+                                                    e.preventDefault()
+                                                    deniedSound.play()
+                                                }
+                                                }}>
+                                                <div className='size-44 border-2 border-navy rounded-xl py-3 px-6 hover:scale-110 transition-all cursor-pointer flex flex-col justify-around hover:bg-navy group'>
+                                                        <div className='flex items-center justify-between'>
+                                                            <h1 className='font-Mono text-4xl group-hover:text-white transition-all'>{item.index}</h1>
+                                                            {
+                                                                item.index <= progress ?
+                                                                    <div className="text-4xl text-navy group-hover:text-white transition-all"><AiFillUnlock /></div>
+                                                                :
+                                                                    <div className="text-4xl text-navy group-hover:text-white transition-all"><AiFillLock /></div>
+
+                                                            }
+                                                            <h1 className='text-xl font-Mono group-hover:text-white transition-all'>{item.targetSpeed}s</h1>
+                                                        </div>
+                                                    <h1 className='self-center text-center text-3xl font-semibold group-hover:text-white'>{item.img}</h1>
                                                     <h1 className='text-sm group-hover:text-white transition-all '>{item.name}</h1>
                                                 </div>
                                             </Link>

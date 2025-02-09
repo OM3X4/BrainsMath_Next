@@ -9,14 +9,15 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaChartPie } from "react-icons/fa";
 import { FaLightbulb } from "react-icons/fa";
 import { MdOutlineCenterFocusStrong } from "react-icons/md";
-
+import Loading from './Loading';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 
 
+
 function Home() {
 
-
+    const [isLoading , setIsLoading] = useState(true)
     const router = useRouter();
 
 
@@ -66,6 +67,10 @@ function Home() {
             "Boost Your Confidence in Roots: Gain the ability to quickly and accurately solve square root problems without a calculator."
         ]
     ]
+
+    useEffect(() => {
+        setIsLoading(false)
+    } , [])
 
 
 

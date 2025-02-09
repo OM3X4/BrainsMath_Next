@@ -23,7 +23,8 @@ export const ProgressBase = [
                 img: "1 + 2",
                 targetSpeed:0,
                 starsMap:[],
-                link:"/lesson?index=1"
+                link:"/lesson?index=1",
+
             },
             {
                 index: 2,
@@ -31,7 +32,10 @@ export const ProgressBase = [
                 img: "🎯",
                 targetSpeed:2,
                 starsMap:[2 , 1.5 , 1],
-                link:"train?digit1=1&digit2=1&op=0&number=10"
+                link:"train?digit1=1&digit2=1&op=0&number=10",
+                digit1:1,
+                digit2:1,
+                op:0
             },
             {
                 index:3,
@@ -47,7 +51,10 @@ export const ProgressBase = [
                 img: "🎯",
                 targetSpeed:3,
                 starsMap:[3 , 2 , 1],
-                link:"/train?digit1=2&digit2=2&op=0&number=10"
+                link:"/train?digit1=2&digit2=2&op=0&number=10",
+                digit1:2,
+                digit2:2,
+                op:0
             },
             {
                 index:5,
@@ -63,7 +70,10 @@ export const ProgressBase = [
                 img: "🎯",
                 targetSpeed:5,
                 starsMap:[5 , 4 , 3],
-                link:"/train?digit1=3&digit2=3&op=0&number=10"
+                link:"/train?digit1=3&digit2=3&op=0&number=10",
+                digit1:3,
+                digit2:3,
+                op:0
             },
         ]
     },
@@ -84,7 +94,8 @@ export const ProgressBase = [
                 img: "🎯",
                 targetSpeed:3,
                 starsMap:[3 , 2 , 1],
-                link:"/train?digit1=3&digit2=3&op=1&number=10"
+                link:"/train?digit1=3&digit2=3&op=1&number=10",
+
             },
             {
                 index:9,
@@ -100,7 +111,10 @@ export const ProgressBase = [
                 img: "🎯",
                 targetSpeed:4,
                 starsMap:[4 , 3 , 2],
-                link:"/train?digit1=3&digit2=3&op=1&number=10" // need Editing
+                link:"/train?digit1=3&digit2=3&op=1&number=10", // need Editing
+                digit1:3,
+                digit2:3,
+                op:1
             },
         ]
     },
@@ -121,7 +135,10 @@ export const ProgressBase = [
                 img: "🎯",
                 targetSpeed:3,
                 starsMap:[3 , 2 , 1.5],
-                link:"/train?digit1=1&digit2=2&op=2&number=10"
+                link:"/train?digit1=1&digit2=2&op=2&number=10",
+                digit1:1,
+                digit2:2,
+                op:2
             },
             {
                 index:13,
@@ -137,7 +154,10 @@ export const ProgressBase = [
                 img: "🎯",
                 targetSpeed:4,
                 starsMap:[4 , 3 , 2],
-                link:"/train?digit1=1&digit2=3&op=2&number=10"
+                link:"/train?digit1=1&digit2=3&op=2&number=10",
+                digit1:1,
+                digit2:3,
+                op:2
             },
         ]
     },
@@ -158,7 +178,10 @@ export const ProgressBase = [
                 img: "🎯",
                 targetSpeed:7,
                 starsMap:[7 , 5 , 3],
-                link:"/train?digit1=2&digit2=1&op=3&number=10"
+                link:"/train?digit1=2&digit2=1&op=3&number=10",
+                digit1:2,
+                digit2:1,
+                op:3
             },
             {
                 index:17,
@@ -174,7 +197,10 @@ export const ProgressBase = [
                 img: "🎯",
                 targetSpeed:10,
                 starsMap:[10 , 7 , 4],
-                link:"/train?digit1=3&digit2=1&op=3&number=10"
+                link:"/train?digit1=3&digit2=1&op=3&number=10",
+                digit1:3,
+                digit2:1,
+                op:3
             },
         ]
     }
