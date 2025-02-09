@@ -22,21 +22,7 @@ function Home() {
 
 
     function handleStart() {
-        let storage = localStorage.getItem("progress");
-        if (storage) {
-            let lesson = Data[parseInt(storage)];
-            if (lesson.type == "practice") {
-                router.prefetch(`/practice?index=${storage}`)
-                router.push(`/practice?index=${storage}`);
-            } else {
-                router.prefetch(`/lesson?index=${storage}`)
-                router.push(`/lesson?index=${storage}`);
-            }
-        } else {
-            router.prefetch(`/lesson?index=0`)
-            router.push(`lesson?index=0`)
-            localStorage.setItem("progress", 0)
-        }
+        router.push('/lessons')
     }
 
 
@@ -77,7 +63,9 @@ function Home() {
 
 
     return (
-        <>
+        isLoading ?
+        <Loading />
+        :<>
             <header className="flex items-center justify-center flex-col md:h-[calc(100vh-5rem)]">
                 <div className="flex items-center justify-center flex-col">
                     <h1 className='text-navy text-5xl md:text-8xl lg:text-[9rem] font-bold font-Mono text-center mb-5 whitespace-pre-wrap'>

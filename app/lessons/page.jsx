@@ -1,11 +1,15 @@
 /* eslint-disable */
 'use client'
+import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { AiFillUnlock } from "react-icons/ai";
 import { AiFillLock } from "react-icons/ai";
 import React, { useEffect , useState } from 'react';
 import { ProgressBase } from './ProgressBase';
 import Link from 'next/link';
 import Loading from "../Loading";
+
+
 
 
 
@@ -76,7 +80,7 @@ function Lessons() {
         <h1 className='text-center text-6xl font-Mono text-navy mb-5'>Learning Plan</h1>
         {/* stats */}
         <div className='flex items- justify-start w-[80%] mx-auto gap-3 mb-10'>
-            <h1 className='font-Mono'><span className='font-bold'>81%</span> Progress</h1>
+            <h1 className='font-Mono'><span className='font-bold'>{parseInt((progress / 17) * 100)}%</span> Progress</h1>
             <h1 className='font-Mono'><span className='font-bold'>1578</span> Stars</h1>
         </div>
         {/* Main */}
@@ -96,7 +100,7 @@ function Lessons() {
                                                     deniedSound.play()
                                                 }
                                                 }}>
-                                                <div className='size-44 border-2 border-navy rounded-xl py-3 px-6 hover:scale-110 transition-all cursor-pointer flex flex-col justify-around hover:bg-navy group'>
+                                                <div className={` size-44 border-2 border-navy rounded-xl py-3 px-6 hover:scale-110 transition-all cursor-pointer flex flex-col justify-around hover:bg-navy group ${item.index > progress ? "" : "scale-[102%]"}`}>
                                                         <div className='flex items-center justify-between'>
                                                             <h1 className='font-Mono text-4xl group-hover:text-white transition-all'>{item.index}</h1>
                                                             {
@@ -110,6 +114,19 @@ function Lessons() {
                                                         </div>
                                                     <h1 className='self-center text-center text-3xl font-semibold group-hover:text-white'>{item.img}</h1>
                                                     <h1 className='text-sm group-hover:text-white transition-all '>{item.name}</h1>
+                                                    <div className="flex items-center justify-center">
+                                                        {
+                                                            item.starsMap.map((star) => {
+                                                                let validTests = userData.filter((test) => (test.digit1 == item.digit1 && item.digit2 == item.digit2 && test.type == item.op && (test.speed / 1000) <= star))
+                                                                if(validTests.length >= 3){
+                                                                    return <AiFillStar className="text-3xl text-yellow-300"/>
+                                                                }else{
+                                                                    return <AiOutlineStar className="text-3xl text-yellow-300"/>
+                                                                }
+
+                                                            })
+                                                        }
+                                                    </div>
                                                 </div>
                                             </Link>
                                         )

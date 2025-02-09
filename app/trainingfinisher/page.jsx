@@ -1,5 +1,6 @@
 /* eslint-disable */
 'use client'
+import { FaCrown } from "react-icons/fa";
 import { Suspense } from 'react';
 import React , { useState , useEffect} from 'react';
 import Link from 'next/link';
@@ -28,6 +29,7 @@ const expressions = [
     "Masterful"
 ];
 
+
 const getColor = (speed) => {
     // Ensure speed is within the 0 to 20 range
     const clampedSpeed = Math.min(Math.max(speed / 1000, 0), 12);
@@ -52,6 +54,7 @@ function msToFormattedTime(ms) {
 function TrainFinisherContent() {
 
 
+    const [isCongratulations , setIsCongratulations] = useState(false)
     const search = useSearchParams()
     const [expression , setExpression] = useState(null)
     const [link , setLink] = useState("")
@@ -62,6 +65,12 @@ function TrainFinisherContent() {
         setExpression(expressions[randomNumber]);
         setLink(decodeURIComponent(search.get("link")))
         setSpeed(parseInt(search.get("speed")))
+
+        if((parseInt(search.get("speed")) / 1000) <= parseInt(search.get("req"))){
+            setIsCongratulations(true)
+        }
+
+
     } , []);
 
 
@@ -74,6 +83,29 @@ function TrainFinisherContent() {
             <div className=' flex justify-center items-center flex-col md:flex-row md:gap-5 mb-10 md:mb-0'>
                 <h1 style={{color: getColor(speed)}} className='text-7xl md:text-9xl font-mono font-black md:mb-10'>{msToFormattedTime(speed)}</h1>
                 <h6 className='text-lg font-Mono font-bold text-navy'>SPQ<span className='text-lightNavy text-[0.5rem]'>(Second Per Question)</span></h6>
+                {isCongratulations ?
+                    <div className="group relative inline-block">
+                    {/* Crown Icon */}
+                    <FaCrown className="text-yellow-400 text-5xl" />
+
+                    {/* Tooltip Message */}
+                    <div
+                        className="
+                            bg-navy
+                            absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2
+                            bg-gray-800 text-white text-sm rounded py-1 px-2
+                            opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+                            transition-all duration-300
+                            pointer-events-none
+                            font-semibold text-center
+
+                        "
+                        >
+                        This Test Pass The Requirements To Unlock The Next Level
+                    </div>
+                    <span className="bg"></span>
+                </div>
+                : ""}
             </div>
             <h1 className='text-4xl text-center md:text-8xl mb-10 font-bold font-Mono text-lightNavy'>{expression}</h1>
             <div className=' flex gap-5 flex-col items-center justify-center'>
@@ -82,9 +114,9 @@ function TrainFinisherContent() {
                         Repeat
                     </div>
                 </Link>
-                <Link href={"/"} prefetch={true}>
+                <Link href={"/lessons"} prefetch={true}>
                     <div className='text-center mt-10 bg-green py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button '>
-                        Main Menu
+                        Return To Lessons
                     </div>
                 </Link>
             </div>

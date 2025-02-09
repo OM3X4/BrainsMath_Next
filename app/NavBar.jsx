@@ -11,18 +11,7 @@ function NavBar() {
 
 
     function handleStart() {
-        let storage = localStorage.getItem("progress");
-        if (storage) {
-            let lesson = Data[parseInt(storage)];
-            if (lesson.type == "practice") {
-                router.push(`/practice?index=${storage}`);
-            } else {
-                router.push(`/lesson?index=${storage}`);
-            }
-        } else {
-            router.push(`lesson?index=0`)
-            localStorage.setItem("progress", 0)
-        }
+        router.push("/lessons")
     }
 
 

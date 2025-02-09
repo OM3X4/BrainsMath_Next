@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import React, { useState, useEffect } from 'react';
 import { Data } from '../Data/Collary2';
 import { useRouter ,useSearchParams } from 'next/navigation';
-
+import Loading from '../Loading';
 
 
 const renderTextWithBold = (text) => {
@@ -155,7 +155,7 @@ function LessonContent() {
 
     return (
         <>
-        <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
+        <Suspense fallback={<Loading />}>
             {lesson ? <div className='flex items-center justify-center h-[calc(80vh-5rem)]'>
                 <div>
                     {/* numbers */}

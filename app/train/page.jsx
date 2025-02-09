@@ -31,7 +31,7 @@ function TrainContent() {
 
 
 
-
+    const [req , setReq] = useState(0)
 
     const [isButtonDisabled , setIsButtonDisabled] = useState(false)
     const [questions , setQuestions] = useState(null)
@@ -84,6 +84,10 @@ function TrainContent() {
     //Generate Questions
     useEffect(() => {
         questionGen();
+        let searchReq = search.get("req")
+        if(searchReq){
+            setReq(searchReq)
+        }
     } , [])
 
 
@@ -146,7 +150,7 @@ function TrainContent() {
                 setIsCorrectAnswer(true)
                 setTimeout(() => {
                     setIsCorrectAnswer(false)
-                    router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}`)
+                    router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}&req=${req}`)
                 } , 500)
             }
         }else if(currentContent < questions.length - 1){
@@ -184,7 +188,7 @@ function TrainContent() {
             setIsWrongAnswer(true)
             setTimeout(() => {
                 setIsWrongAnswer(false)
-                router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}`)
+                router.push(`/trainingfinisher?link=${currentURL}&speed=${dataToSpeed(collectedData)}&req=${req}`)
             } , 500)
         }
     }
