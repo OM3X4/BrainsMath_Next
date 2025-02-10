@@ -37,7 +37,8 @@
 .button {
   @apply mt-10 bg-navy py-2 px-6 md:py-5 md:px-12 text-white rounded-2xl
   text-2xl md:text-4xl shadow-[4px_4px_0_rgb(60,100,180)]
-  transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button;
+  transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button
+  dark:bg-lightNavy dark:text-white dark:font-bold; /* Moves the button up-left */
 }
 
 @keyframes slideContent {

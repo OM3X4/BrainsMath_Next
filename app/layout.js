@@ -35,7 +35,7 @@ export const metadata = {
     type: "website",
     url: "https://brainsmath.netlify.app",
     images: [{
-      url: "https://brainsmath.netlify.app/Brains.png",
+      url: "https://brainsmath.netlify.app/LogoDark.png",
       width: 1200,
       height: 630,
       alt: "BrainsMath - Master Mental Math",
@@ -45,7 +45,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "BrainsMath - Learn Mental Math",
     description: "Get faster at math with BrainsMath. Free lessons and practice for improving mental math skills!",
-    images: ["https://brainsmath.netlify.app/Icons/Brains.png"], // Replace with actual image URL
+    images: ["https://brainsmath.netlify.app/LogoDark.png"], // Replace with actual image URL
   },
 };
 
@@ -55,6 +55,10 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+
+
+
+
   return (
     <html lang="en">
       <head>
@@ -76,11 +80,11 @@ export default function RootLayout({ children }) {
               `,
             }}
           />
-        <meta name="theme-color" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <meta name="theme-color" content="#122454" />
+        <meta name="msapplication-TileImage" content="/icons/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="image" content="https://brainsmath.netlify.app/Brains.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -91,7 +95,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         <meta name="google-site-verification" content="qTSl8amExPj2IWekQ7YO0aeVOlRzeRo2KXfAxS3n880" />      </head>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-navy transition-all`}>
         <NavBar />
         {children}
       </body>

@@ -163,7 +163,7 @@ function LessonContent() {
                         {HighlightText(lesson.content[currentContent].numbers)}
                     </div>
                     {/* main text */}
-                    <div className={`max-w-[80%] mx-auto text-wrap text-center text-gray ${lesson.content[currentContent].numbers.length ? "text-2xl" : "text-5xl"}  ${lesson.content[currentContent].isQuote ? "italic " : ""}`} >
+                    <div className={`max-w-[80%] mx-auto text-wrap text-center text-gray dark:text-white ${lesson.content[currentContent].numbers.length ? "text-2xl" : "text-5xl"}`} >
                         {renderTextWithBold(lesson.content[currentContent].text)}
                     </div>
                     {/* choice */}
@@ -172,14 +172,14 @@ function LessonContent() {
                             lesson.content[currentContent].answer ?
                                 lesson.content[currentContent].answer.choices.map((choice, i) => {
                                     return (
-                                        <div key={i} className='text-center mt-10 bg-green py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button'
+                                        <div key={i} className='text-center mt-10 bg-green dark:bg-lightNavy dark:hover:brightness-110 py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button'
                                             onClick={e => handleClick(choice, lesson.content[currentContent].answer.answer)}>
                                             {choice}
                                         </div>
                                     )
                                 })
                                 :
-                                <div className='text-center mt-10 bg-green py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1, 1, true)}>
+                                <div className='text-center mt-10 bg-green dark:bg-lightNavy dark:hover:brightness-110 py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' onClick={e => handleClick(1, 1, true)}>
                                     Next
                                 </div>
                         }

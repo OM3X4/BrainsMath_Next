@@ -1,11 +1,35 @@
 /* eslint-disable */
 'use client';
+import { BsFillMoonStarsFill } from "react-icons/bs";
+import { MdOutlineWbSunny } from "react-icons/md";
 import { Data } from './Data/Collary';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 function NavBar() {
+
+    const [darkMode, setDarkMode] = useState(() => {
+        // Try to read "darkMode" from localStorage. Assume "1" means true.
+        return localStorage.getItem("darkMode") === "1";
+    });
+
+    // Update the DOM and localStorage when darkMode changes.
+    useEffect(() => {
+
+
+        if (darkMode) {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+            localStorage.setItem("darkMode", "1");
+        } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+            localStorage.setItem("darkMode", "0");
+            console.log(false)
+        }
+    }, [darkMode]);
+
 
     const router = useRouter();
 
@@ -16,18 +40,24 @@ function NavBar() {
 
 
     return (
-    <>
-        <nav className=' flex items-center justify-between px-5 md:px-20 lg:px-32 flex-row h-20'>
-            <div className=' flex items-center justify-between w-11/12'>
-                <Link href={"/"} prefetch={true}><h1 className='text-2xl lg:text-4xl font-bold text-navy cursor-pointer'>BrainsMath</h1></Link>
-                <div className='flex items-center justify-center gap-5'>
-                    <h5 className='cursor-pointer hidden lg:inline-block' onClick={e => {handleStart();}}>Get Started</h5>
-                    <Link href={"/trainsettings"} prefetch={true}><h5 className='cursor-pointer'>Practice</h5></Link>
+        <>
+            <nav className=' flex items-center justify-between px-5 md:px-20 lg:px-32 flex-row h-20 dark:bg-navy transition-all'>
+                <div className=' flex items-center justify-between w-11/12'>
+                    <Link href={"/"} prefetch={true}><h1 className='text-2xl lg:text-4xl font-bold text-navy cursor-pointer dark:text-white transition-all'>BrainsMath</h1></Link>
+                    <div className='flex items-center justify-center gap-5'>
+                        <h5 className='cursor-pointer hidden lg:inline-block dark:text-white transition-all' onClick={e => { handleStart(); }}>Your Plan</h5>
+                        <Link href={"/trainsettings"} prefetch={true}><h5 className='cursor-pointer dark:text-white transition-all'>Practice</h5></Link>
+                        {
+                            !darkMode ?
+                                <div className=" p-1 rounded-full group hover:scale-110 transition-all"><BsFillMoonStarsFill className="text-4xl text-navy hover:scale-110 transition-all" onClick={e => { setDarkMode(prev => !prev) }} /></div>
+                                :
+                                <div className=" flex items-center justify-center p-1 rounded-full group hover:scale-110 transition-all"><MdOutlineWbSunny className="text-4xl text-yellow-500 transition-all" onClick={e => { setDarkMode(prev => !prev) }} /></div>
+                        }
+                    </div>
                 </div>
-            </div>
-            {/* <div className='cursor-pointer bg-navy text-xl ml-16 rounded-2xl px-4 py-2 text-white font-medium hover:bg-black transition-all'>Login</div> */}
-        </nav>
-    </>
+                {/* <div className='cursor-pointer bg-navy text-xl ml-16 rounded-2xl px-4 py-2 text-white font-medium hover:bg-black transition-all'>Login</div> */}
+            </nav>
+        </>
     );
 }
 

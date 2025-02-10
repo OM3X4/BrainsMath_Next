@@ -198,13 +198,13 @@ function TrainContent() {
     return (
     <>
         <Suspense fallback={<div className='h-[calc(100vh-5rem)] flex items-center justify-center'>Loading</div>}>
-            {questions ? <div className={`flex items-center justify-center h-[calc(80vh-5rem)]`}>
-                <div className="w-3/4 md:w-6/12 bg-slate-400 rounded-full h-4 dark:bg-gray-700 absolute top-20">
+            {questions ? <div className={`flex items-center justify-center h-[calc(80vh-5rem)] `}>
+                <div className="w-3/4 md:w-6/12 bg-slate-400 rounded-full h-4 dark:bg-gray-700  absolute top-20 dark:bg-lightNavy">
                     <div className="bg-green h-4 rounded-full transition-all" style={{width: `${progress}%`}}></div>
                 </div>
                 <div>
                     {/* numbers */}
-                    <div className=' text-8xl mb-10 font-bold text-navy text-center'>
+                    <div className=' text-8xl mb-10 font-bold text-navy text-center dark:text-white '>
                         {questions[currentContent].question}
                     </div>
                     {/* choice */}
@@ -213,7 +213,7 @@ function TrainContent() {
                             questions[currentContent].choices?
                             questions[currentContent].choices.map((choice , i) => {
                                 return(
-                                    <div key={i} className='text-center mt-10 bg-green py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button'
+                                    <div key={i} className='text-center mt-10 bg-green dark:bg-lightNavy py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button dark:hover:brightness-125'
                                     onClick={e => handleClick(choice , questions[currentContent].answer)}>
                                         {choice}
                                     </div>

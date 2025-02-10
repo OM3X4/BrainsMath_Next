@@ -77,20 +77,19 @@ function Lessons() {
     isLoading ?
     <Loading />
     :<>
-        <h1 className='text-center text-6xl font-Mono text-navy mb-5'>Learning Plan</h1>
+        <h1 className='text-center text-6xl font-Mono text-navy mb-5 dark:text-white'>Learning Plan</h1>
         {/* stats */}
-        <div className='flex items- justify-start w-[80%] mx-auto gap-3 mb-10'>
-            <h1 className='font-Mono'><span className='font-bold'>{parseInt((progress / 17) * 100)}%</span> Progress</h1>
-            <h1 className='font-Mono'><span className='font-bold'>1578</span> Stars</h1>
+        <div className='flex justify-center md:justify-start  w-[80%] mx-auto gap-3 mb-10'>
+            <h1 className='font-Mono dark:text-white text-center'><span className='font-bold'>{parseInt((progress / 17) * 100)}%</span> Progress</h1>
         </div>
         {/* Main */}
-        <div className=' w-[80%] mx-auto'>
+        <div className=' w-[80%] mx-auto md:block flex items-center justify-center flex-col'>
             {
                 ProgressBase.map((category) => {
                     return(
                         <div className='my-5'>
-                            <h1 className='font-Mono text-2xl mb-5'>{category.name}</h1>
-                            <div className='flex gap-6'>
+                            <h1 className='font-Mono text-2xl mb-5 dark:text-white'>{category.name}</h1>
+                            <div className='flex gap-6 flex-col md:flex-row flex-wrap'>
                                 {
                                     category.lessons.map((item) => {
                                         return(
@@ -100,14 +99,14 @@ function Lessons() {
                                                     deniedSound.play()
                                                 }
                                                 }}>
-                                                <div className={` size-44 border-2 border-navy rounded-xl py-3 px-6 hover:scale-110 transition-all cursor-pointer flex flex-col justify-around hover:bg-navy group ${item.index > progress ? "" : "scale-[102%]"}`}>
+                                                <div className={` size-44 border-2 border-navy dark:border-white dark:text-slate-300 rounded-xl py-3 px-6 hover:scale-110 transition-all cursor-pointer flex flex-col justify-around hover:bg-navy group ${item.index > progress ? "" : "scale-[102%]"}`}>
                                                         <div className='flex items-center justify-between'>
                                                             <h1 className='font-Mono text-4xl group-hover:text-white transition-all'>{item.index}</h1>
                                                             {
                                                                 item.index <= progress ?
-                                                                    <div className="text-4xl text-navy group-hover:text-white transition-all"><AiFillUnlock /></div>
+                                                                    <div className="text-4xl text-navy group-hover:text-white transition-all dark:text-white"><AiFillUnlock /></div>
                                                                 :
-                                                                    <div className="text-4xl text-navy group-hover:text-white transition-all"><AiFillLock /></div>
+                                                                    <div className="text-4xl text-navy group-hover:text-white transition-all dark:text-white"><AiFillLock /></div>
 
                                                             }
                                                             <h1 className='text-xl font-Mono group-hover:text-white transition-all'>{item.targetSpeed}s</h1>

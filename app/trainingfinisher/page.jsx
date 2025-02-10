@@ -81,8 +81,8 @@ function TrainFinisherContent() {
     <>
         <div className='flex items-center justify-center flex-col h-[calc(100vh-5rem)]'>
             <div className=' flex justify-center items-center flex-col md:flex-row md:gap-5 mb-10 md:mb-0'>
-                <h1 style={{color: getColor(speed)}} className='text-7xl md:text-9xl font-mono font-black md:mb-10'>{msToFormattedTime(speed)}</h1>
-                <h6 className='text-lg font-Mono font-bold text-navy'>SPQ<span className='text-lightNavy text-[0.5rem]'>(Second Per Question)</span></h6>
+                <h1 style={{color: getColor(speed)}} className='text-7xl md:text-9xl font-mono font-black md:mb-10 '>{msToFormattedTime(speed)}</h1>
+                <h6 className='text-lg font-Mono font-bold text-navy dark:text-white'>SPQ<span className='text-lightNavy text-[0.5rem] dark:text-white'>(Second Per Question)</span></h6>
                 {isCongratulations ?
                     <div className="group relative inline-block">
                     {/* Crown Icon */}
@@ -97,17 +97,16 @@ function TrainFinisherContent() {
                             opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                             transition-all duration-300
                             pointer-events-none
-                            font-semibold text-center
+                            font-semibold text-center dark:bg-lightNavy dark:text-white
 
                         "
                         >
                         This Test Pass The Requirements To Unlock The Next Level
                     </div>
-                    <span className="bg"></span>
                 </div>
                 : ""}
             </div>
-            <h1 className='text-4xl text-center md:text-8xl mb-10 font-bold font-Mono text-lightNavy'>{expression}</h1>
+            <h1 className='text-4xl text-center md:text-8xl mb-10 font-bold font-Mono text-lightNavy dark:text-white'>{expression}</h1>
             <div className=' flex gap-5 flex-col items-center justify-center'>
                 <Link href={link} prefetch={true}>
                     <div className='text-center mt-10 bg-green py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button '>

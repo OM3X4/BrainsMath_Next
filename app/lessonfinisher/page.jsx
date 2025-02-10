@@ -45,9 +45,9 @@ function LessonFinisherContent() {
     <>
         <Suspense fallback={<Loading />}>
             <div className='flex items-center justify-center flex-col h-[calc(100vh-5rem)]'>
-                <h1 className='text-5xl md:text-8xl mb-10 font-bold font-Mono text-lightNavy'>{expression}</h1>
+                <h1 className='text-5xl md:text-8xl mb-10 font-bold font-Mono text-lightNavy dark:text-white'>{expression}</h1>
                 <Link href={"/lessons"} prefetch={true}>
-                    <div className='text-center mt-10 bg-green py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button '>
+                    <div className='text-center mt-10 bg-green dark:bg-lightNavy dark:hover:brightness-110 py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button '>
                         Next
                     </div>
                 </Link>
