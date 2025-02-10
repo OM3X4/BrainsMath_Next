@@ -15,12 +15,16 @@ function AnalyticsContent() {
 
     const [stored , setStored] = useState([])
 
+
+
     useEffect(() => {
+
+        if(typeof window !== 'undefined'){
         let data = localStorage.getItem("collectedData")
         if(data)
         {
             setStored(JSON.parse(data));
-        }
+        }}
     } , [])
 
 

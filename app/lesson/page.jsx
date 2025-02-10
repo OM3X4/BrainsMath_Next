@@ -136,8 +136,6 @@ function LessonContent() {
                         router.prefetch(`/lessonfinisher?link=/practice?index=${currentLessonIndex + 1}`)
                         router.push(`/lessonfinisher?link=/practice?index=${currentLessonIndex + 1}`)
                     }
-                    let LastProgress = parseInt(localStorage.getItem("progress"));
-                    localStorage.setItem("progress", LastProgress + 1 || 0)
                 }else{
                     router.prefetch('/cong')
                     router.push('/cong')

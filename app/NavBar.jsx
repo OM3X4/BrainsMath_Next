@@ -11,22 +11,25 @@ function NavBar() {
 
     const [darkMode, setDarkMode] = useState(() => {
         // Try to read "darkMode" from localStorage. Assume "1" means true.
-        return localStorage.getItem("darkMode") === "1";
+        if(typeof window !== 'undefined'){
+            return localStorage.getItem("darkMode") === "1";
+        }
     });
 
     // Update the DOM and localStorage when darkMode changes.
     useEffect(() => {
 
-
-        if (darkMode) {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-            localStorage.setItem("darkMode", "1");
-        } else {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-            localStorage.setItem("darkMode", "0");
-            console.log(false)
+        if(typeof window !== 'undefined'){
+            if (darkMode) {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+                localStorage.setItem("darkMode", "1");
+            } else {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("theme", "light");
+                localStorage.setItem("darkMode", "0");
+                console.log(false)
+            }
         }
     }, [darkMode]);
 

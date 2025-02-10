@@ -49,27 +49,29 @@ function TrainContent() {
 
 
     const saveProgress = () => {
-        try {
-            let speed = dataToSpeed(collectedData);
-            let type = collectedData[0].question.type;
-            let date = new Date()
-            let digit1 = parseInt(search.get("digit1"))
-            let digit2 = parseInt(search.get("digit2"))
+        if(typeof window !== 'undefined'){
+            try {
+                let speed = dataToSpeed(collectedData);
+                let type = collectedData[0].question.type;
+                let date = new Date()
+                let digit1 = parseInt(search.get("digit1"))
+                let digit2 = parseInt(search.get("digit2"))
 
-            // Retrieve existing progress or initialize an empty array
-            const existingData = JSON.parse(localStorage.getItem("collectedData") || "[]");
+                // Retrieve existing progress or initialize an empty array
+                const existingData = JSON.parse(localStorage.getItem("collectedData") || "[]");
 
-            // Create the new progress object
-            const newProgress = { speed, type , date , digit1 , digit2 };
+                // Create the new progress object
+                const newProgress = { speed, type , date , digit1 , digit2 };
 
-            // Merge the new progress with existing data
-            const mergedData = [...existingData, newProgress];
+                // Merge the new progress with existing data
+                const mergedData = [...existingData, newProgress];
 
-            // Save back to localStorage
-            localStorage.setItem("collectedData", JSON.stringify(mergedData));
-        } catch (error) {
-            console.error("Failed to save progress:", error);
-        }
+                // Save back to localStorage
+                localStorage.setItem("collectedData", JSON.stringify(mergedData));
+            } catch (error) {
+                console.error("Failed to save progress:", error);
+            }
+    }
     };
 
     function questionGen()

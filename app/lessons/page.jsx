@@ -32,8 +32,10 @@ function Lessons() {
     const [isLoading , setIsLoading] = useState(true)
 
     useEffect(() => {
+        if(typeof window !== 'undefined'){
         let data = localStorage.getItem("collectedData")
-        setUserData(JSON.parse(data) || []);
+        setUserData(JSON.parse(data) || [])
+    }
     }, [])
 
 
