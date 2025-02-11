@@ -56,12 +56,13 @@ function TrainContent() {
                 let date = new Date()
                 let digit1 = parseInt(search.get("digit1"))
                 let digit2 = parseInt(search.get("digit2"))
+                let number = parseInt(search.get("number"))
 
                 // Retrieve existing progress or initialize an empty array
                 const existingData = JSON.parse(localStorage.getItem("collectedData") || "[]");
 
                 // Create the new progress object
-                const newProgress = { speed, type , date , digit1 , digit2 };
+                const newProgress = { speed, type , date , digit1 , digit2 , number };
 
                 // Merge the new progress with existing data
                 const mergedData = [...existingData, newProgress];

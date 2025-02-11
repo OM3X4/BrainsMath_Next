@@ -45,7 +45,7 @@ function TrainChoose() {
                     <option value={3}>Square</option>
                     <option value={4}>Square Root</option>
                 </select>
-                <input value={"10"} placeholder='Number Of Questions' name="Number Of Questions" id="" type='number' className="text-center md:text-3xl mx-5 py-2 px-2 font-semibold rounded-3xl bg-lightNavy text-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" onChange={e => setNumber(e.target.value)}>
+                <input  placeholder='Number Of Questions(10)' name="Number Of Questions" id="" type='number' className="text-center md:text-3xl mx-5 py-2 px-2 font-semibold rounded-3xl bg-lightNavy text-white appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" onChange={e => setNumber(e.target.value)}>
                 </input>
             </div>
             <div className='button' onClick={handleGo}>

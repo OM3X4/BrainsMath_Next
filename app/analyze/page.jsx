@@ -15,6 +15,12 @@ function AnalyticsContent() {
 
     const [stored , setStored] = useState([])
 
+    const [digit1 , setDigit1] = useState(1);
+    const [digit2 , setDigit2] = useState(1);
+    const [operation , setOperation] = useState(0);
+
+    const [validData , setValidData] = useState([])
+
 
 
     useEffect(() => {
@@ -23,23 +29,18 @@ function AnalyticsContent() {
         let data = localStorage.getItem("collectedData")
         if(data)
         {
-            setStored(JSON.parse(data));
+            setStored(JSON.parse(data).sort((a, b) => new Date(a.date) - new Date(b.date))
+        );
         }}
     } , [])
 
+    useEffect(() => {
+        console.log(stored.filter(test => test.digit1 == digit1 && test.digit2 == digit2 && test.type == operation && test.number > 9))
+        setValidData(stored.filter(test => test.digit1 == digit1 && test.digit2 == digit2 && test.type == operation && test.number > 9))
+    } , [stored , digit1 , digit2 , operation])
 
-    let data = stored.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    let addition = data.filter(item => item.question.type == 0);
-    let subtraction = data.filter(item => item.question.type == 1);
-    let onetwo = data.filter(item => item.question.type == 2);
-    let twoMultp = data.filter(item => item.question.type == 3);
-    let twothree = data.filter(item => item.question.type == 4);
-    let threeMultp = data.filter(item => item.question.type == 5);
-    let twosquare = data.filter(item => item.question.type == 6);
-    let threesquare = data.filter(item => item.question.type == 7);
-    let perfectroot = data.filter(item => item.question.type == 8);
-    let nonperfectroot = data.filter(item => item.question.type == 9);
+
 
 
 
@@ -47,130 +48,39 @@ function AnalyticsContent() {
 
     return (
     <>
-        <div className='flex items-center justify-center flex-col bg-slate-100'>
-            <h1 className='mx-auto my-10 text-navy text-8xl font-Mono '>Your Statics</h1>
-            <div className='flex items-center justify-center flex-col bg-white w-[70vw] px-20 rounded-3xl py-5 my-5'>
-                <h1 className='text-lightNavy text-3xl font-bold'>All Math</h1>
-                {
-                    data.length ? <LineChart data={data}/> : <h1 className=''>No Available Data</h1>
-                }
-                <Link href="/train?type=10">
-                    <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                        Train On This
-                    </div>
-                </Link>
+        <div className='flex items-center justify-center flex-col'>
+            {/* filters */}
+            <div className='h-20'>
+                <select name="First Number Digits" id="" className="text-center md:text-3xl max-w-[calc(100vw-10rem)] mx-5 py-2 px-4 font-semibold rounded-3xl bg-lightNavy text-white" onChange={e => setDigit1(e.target.value)}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                </select>
+                <select name="Second Number Digits" id="" className="text-center md:text-3xl max-w-[calc(100vw-10rem)]  mx-5 py-2 px-4 font-semibold rounded-3xl bg-lightNavy text-white" onChange={e => setDigit2(e.target.value)}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                </select>
+                <select name="Second Number Digits" id="" className="text-center md:text-3xl max-w-[calc(100vw-10rem)]  mx-5 py-2 px-4 font-semibold rounded-3xl bg-lightNavy text-white" onChange={e => setOperation(e.target.value)}>
+                    <option value={0}>Addition</option>
+                    <option value={1}>Subtraction</option>
+                    <option value={2}>Multiplication</option>
+                    <option value={3}>Square</option>
+                    <option value={4}>Square Root</option>
+                </select>
             </div>
-            <div className='flex items-center justify-center flex-wrap mx-auto max-w-[70vw] gap-5'>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>Addition</h1>
-                    {
-                        addition.length ? <LineChart data={addition}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=0"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>Subtraction</h1>
-                    {
-                        subtraction.length ? <LineChart data={subtraction}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=1"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>1 * 2 Mulplication</h1>
-                    {
-                        onetwo.length ? <LineChart data={onetwo}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=2"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>2 Digit Mulplication</h1>
-                    {
-                        twoMultp.length ? <LineChart data={twoMultp}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=3"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>2 * 3 Mulplication</h1>
-                    {
-                        twothree.length ? <LineChart data={twothree}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=4"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>3 Digits Mulplication</h1>
-                    {
-                        threeMultp.length ? <LineChart data={threeMultp}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=5"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>2 Digit Squaring</h1>
-                    {
-                        twosquare.length ? <LineChart data={twosquare}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=6"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>3 Digits Squaring</h1>
-                    {
-                        threesquare.length ? <LineChart data={threesquare}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=7"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>Perfect Rooting</h1>
-                    {
-                        perfectroot.length ? <LineChart data={perfectroot}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=8"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-center justify-center flex-col bg-white w-[33vw] px-10 rounded-3xl py-5'>
-                    <h1 className='text-lightNavy text-2xl font-bold'>Non-perfect Root</h1>
-                    {
-                        nonperfectroot.length ? <LineChart data={nonperfectroot}/> : <h1 className=''>No Available Data</h1>
-                    }
-                    <Link href={"/train?type=9"}>
-                        <div className='text-center mt-10 bg-green py-2 px-5 text-white rounded-2xl text-xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button ' >
-                            Train On This
-                        </div>
-                    </Link>
-                </div>
+            {/* chart */}
+            <div className=' max-h-[calc(100vh-12rem)] w-[70%] dark:bg-white p-9 rounded-3xl'>
+                {
+                validData.length ?
+                    <LineChart data={validData}/>
+                :
+                    <div className='text-center text-5xl font-Mono font-bold'>No Avaliable Data , Go Train More</div>
+                }
             </div>
         </div>
     </>

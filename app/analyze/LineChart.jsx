@@ -1,4 +1,5 @@
 /* eslint-disable */
+'use client'
 import React from "react";
 import { Line } from "react-chartjs-2";
 import {
@@ -18,7 +19,7 @@ const LineChart = ({ data }) => {
   const runningAverage = [];
   let totalTime = 0;
   data.forEach((item, index) => {
-    totalTime += item.takenTime; // takenTime assumed to be in milliseconds
+    totalTime += item.speed; // takenTime assumed to be in milliseconds
     runningAverage.push(Math.round(totalTime / (index + 1)));
   });
 
@@ -29,7 +30,7 @@ const LineChart = ({ data }) => {
       {
         label: "Time per Question (ms)",
         // Round each takenTime value to no decimals
-        data: data.map((item) => Math.round(item.takenTime)),
+        data: data.map((item) => Math.round(item.speed)),
         pointRadius: 2,
         pointBackgroundColor: "#139a34",
         borderWidth: 0, // Points only, no connecting line

@@ -48,8 +48,9 @@ function NavBar() {
                 <div className=' flex items-center justify-between w-11/12'>
                     <Link href={"/"} prefetch={true}><h1 className='text-2xl lg:text-4xl font-bold text-navy cursor-pointer dark:text-white transition-all'>BrainsMath</h1></Link>
                     <div className='flex items-center justify-center gap-5'>
-                        <h5 className='cursor-pointer hidden lg:inline-block dark:text-white transition-all' onClick={e => { handleStart(); }}>Your Plan</h5>
-                        <Link href={"/trainsettings"} prefetch={true}><h5 className='cursor-pointer dark:text-white transition-all'>Practice</h5></Link>
+                        <Link href={"analyze"}><h5 className='cursor-pointer hidden lg:inline-block dark:text-white transition-all hover:text-green dark:hover:text-green'>Analyze</h5></Link>
+                        <h5 className='cursor-pointer hidden lg:inline-block dark:text-white transition-all hover:text-green dark:hover:text-green' onClick={e => { handleStart(); }}>Your Plan</h5>
+                        <Link href={"/trainsettings"} prefetch={true}><h5 className='cursor-pointer dark:text-white transition-all hover:text-green dark:hover:text-green'>Practice</h5></Link>
                         {
                             !darkMode ?
                                 <div className=" p-1 rounded-full group hover:scale-110 transition-all"><BsFillMoonStarsFill className="text-4xl text-navy hover:scale-110 transition-all" onClick={e => { setDarkMode(prev => !prev) }} /></div>
