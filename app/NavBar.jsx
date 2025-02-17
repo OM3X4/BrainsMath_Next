@@ -9,11 +9,12 @@ import { useRouter } from 'next/navigation';
 function NavBar() {
 
     const [darkMode, setDarkMode] = useState(() => {
-        // Try to read "darkMode" from localStorage. Assume "1" means true.
-        if(typeof window !== 'undefined'){
-            return localStorage.getItem("darkMode") === "1";
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem("darkMode") === "1"; // Correctly reads storage
         }
+        return false; // Default to light mode if window is undefined
     });
+
 
     // Update the DOM and localStorage when darkMode changes.
     useEffect(() => {
