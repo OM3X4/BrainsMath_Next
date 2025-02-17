@@ -114,7 +114,7 @@ function TrainFinisherContent() {
                     </div>
                 </Link>
                 <Link href={"/lessons"} prefetch={true}>
-                    <div className='text-center mt-10 bg-green py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button '>
+                    <div className='text-center mt-10 bg-green py-5 px-8 md:px-12 text-white rounded-2xl text-xl md:text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button '>
                         Return To Lessons
                     </div>
                 </Link>

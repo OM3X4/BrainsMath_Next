@@ -2,7 +2,6 @@
 'use client';
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { MdOutlineWbSunny } from "react-icons/md";
-import { Data } from './Data/Collary';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

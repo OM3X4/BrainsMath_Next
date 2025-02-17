@@ -56,9 +56,7 @@ function Home() {
     ]
 
     useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false)
-        } , 400)
+        setIsLoading(false)
     }, [])
 
 
@@ -69,19 +67,19 @@ function Home() {
         isLoading ?
             <Loading />
             : <>
-                <header className="flex items-center justify-center flex-col md:h-[calc(100vh-5rem)] dark:bg-navy transition-all">
+                <header className="flex items-center justify-center flex-col h-[calc(50vh-5rem)] md:h-[calc(100vh-5rem)] dark:bg-navy transition-all">
                     <div className="flex items-center justify-center flex-col">
                         <h1 className='text-navy text-4xl md:text-8xl lg:text-[9rem] font-bold font-Mono text-center mb-5 whitespace-pre-wrap dark:text-white transition-all'>
                             <Typewriter
-                                words={["Learn\nMental Math"]}
+                                words={["Learn\nMental Math" , "Learn\nFor Free" , "Learn\nAny Where"]}
                                 cursor
-                                loop={1}
-                                cursorStyle="_"
-                                typeSpeed={70}
+                                loop={0.}
+                                cursorStyle="|"
+                                typeSpeed={100}
                             />
                         </h1>
                     </div>
-                    <p className="text-sm md:text-xl lg:text-xl text-gray dark:text-slate-400">Speed, Accuracy, and Confidence in Every Calculation!</p>
+                    <p className="text-xs md:text-xl lg:text-xl text-gray dark:text-slate-400">Speed, Accuracy, and Confidence in Every Calculation!</p>
                     <button
                         className="button hover:-translate-x-1 hover:-translate-y-1"
                         onClick={handleStart}
@@ -94,16 +92,16 @@ function Home() {
                     <section className="bg-[url('../public/GeometricLightNavy.png')] bg-navy pb-10 bg-contain brightness-90 mt-20 flex items-center justify-center flex-col pt-10 ">
                         <h2 className="font-Mono text-3xl md:text-6xl text-white font-medium ">Why Mental Math?</h2>
                         <div className="flex items-center justify-around w-full mt-10">
-                            <article className="text-white text-xl md:text-3xl text-center flex items-center justify-center flex-col">
+                            <article className="text-white text-sm md:text-3xl text-center flex items-center justify-center flex-col">
                                 <MdOutlineCenterFocusStrong className="text-4xl md:text-6xl mb-3" />
                                 <h3>Improve Focus</h3>
                             </article>
-                            <article className="text-white text-xl md:text-3xl text-center flex items-center justify-center flex-col">
+                            <article className="text-white text-sm md:text-3xl text-center flex items-center justify-center flex-col">
                                 <FaLightbulb className="text-4xl md:text-6xl mb-3" />
                                 <h3>Improve</h3>
                                 <h3>Problem Solving</h3>
                             </article>
-                            <article className="text-white text-xl md:text-3xl text-center flex items-center justify-center flex-col">
+                            <article className="text-white text-sm md:text-3xl text-center flex items-center justify-center flex-col">
                                 <FaChartPie className="text-4xl md:text-6xl max-w-8 text-wrap mb-3" />
                                 <h3>Improve</h3>
                                 <h3>Financial Mangement</h3>

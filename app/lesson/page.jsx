@@ -161,7 +161,7 @@ function LessonContent() {
                         {HighlightText(lesson.content[currentContent].numbers)}
                     </div>
                     {/* main text */}
-                    <div className={`max-w-[80%] mx-auto text-wrap text-center text-gray dark:text-white ${lesson.content[currentContent].numbers.length ? "text-2xl" : "text-5xl"}`} >
+                    <div className={`max-w-[80%] mx-auto  text-center text-gray dark:text-white ${lesson.content[currentContent].numbers.length ? "text-2xl md:text-2xl" : "text-3xl md:text-5xl"}`} >
                         {renderTextWithBold(lesson.content[currentContent].text)}
                     </div>
                     {/* choice */}
@@ -182,14 +182,6 @@ function LessonContent() {
                                 </div>
                         }
                     </div>
-                    {
-                        /* More Buttons */
-                        lesson.content[currentContent].link ?
-                        <div className='flex items-center justify-center'>
-                            <button className='button mx-auto'>More Practice On This Exact Topic</button>
-                        </div>
-                        : ""
-                    }
                 </div>
             </div> : ""}
             {isWrongAnswer ?
