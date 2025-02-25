@@ -33,9 +33,9 @@ export const metadata = {
     title: "BrainsMath - Learn Mental Math Faster and Smarter",
     description: "Master mental math with BrainsMath. Learn quick calculation tricks and practice solving problems efficiently. Free for everyone!",
     type: "website",
-    url: "https://brainsmath.netlify.app",
+    url: "https://brainsmath.org",
     images: [{
-      url: "https://brainsmath.netlify.app/LogoDark.png",
+      url: "https://brainsmath.org/LogoDark.png",
       width: 1200,
       height: 630,
       alt: "BrainsMath - Master Mental Math",
@@ -45,7 +45,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "BrainsMath - Learn Mental Math",
     description: "Get faster at math with BrainsMath. Free lessons and practice for improving mental math skills!",
-    images: ["https://brainsmath.netlify.app/LogoDark.png"], // Replace with actual image URL
+    images: ["https://brainsmath.org/LogoDark.png"], // Replace with actual image URL
   },
 };
 
