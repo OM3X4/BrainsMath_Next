@@ -36,7 +36,12 @@ function AnalyticsContent() {
 
     useEffect(() => {
         console.log(stored.filter(test => test.digit1 == digit1 && test.digit2 == digit2 && test.type == operation && test.number > 9))
-        setValidData(stored.filter(test => test.digit1 == digit1 && test.digit2 == digit2 && test.type == operation && test.number > 9))
+        if(operation != 6){
+            setValidData(stored.filter(test => test.digit1 == digit1 && test.digit2 == digit2 && test.type == operation && test.number > 9))
+        }else{
+            setValidData(stored.filter(test => test.type == 6));
+        }
+
     } , [stored , digit1 , digit2 , operation])
 
 
@@ -71,6 +76,8 @@ function AnalyticsContent() {
                     <option value={2}>Multiplication</option>
                     <option value={3}>Square</option>
                     <option value={4}>Square Root</option>
+                    <option value={6}>Calendar Trick</option>
+
                 </select>
             </div>
             {/* chart */}

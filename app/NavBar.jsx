@@ -1,5 +1,6 @@
 /* eslint-disable */
 'use client';
+import { BsCalendarWeekFill } from "react-icons/bs";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { MdOutlineWbSunny } from "react-icons/md";
 import React, { useState, useEffect } from 'react';
@@ -48,6 +49,7 @@ function NavBar() {
                 <div className=' flex items-center justify-between w-11/12'>
                     <Link href={"/"} prefetch={true}><h1 className='text-2xl lg:text-4xl font-bold text-navy cursor-pointer dark:text-white transition-all'>BrainsMath</h1></Link>
                     <div className='flex items-center justify-center gap-5'>
+                        <Link href="/train?day=true&number=10" className=' items-center justify-center cursor-pointer hidden lg:flex gap-2 dark:text-white transition-all hover:text-green dark:hover:text-green'>Days Trick<BsCalendarWeekFill /></Link>
                         <Link href={"analyze"}><h5 className='cursor-pointer hidden lg:inline-block dark:text-white transition-all hover:text-green dark:hover:text-green'>Analyze</h5></Link>
                         <h5 className='cursor-pointer hidden lg:inline-block dark:text-white transition-all hover:text-green dark:hover:text-green' onClick={e => { handleStart(); }}>Your Plan</h5>
                         <Link href={"/trainsettings"} prefetch={true}><h5 className='cursor-pointer dark:text-white transition-all hover:text-green dark:hover:text-green'>Practice</h5></Link>

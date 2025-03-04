@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import React , { useState , useEffect} from 'react';
 import { useSearchParams , useRouter } from 'next/navigation';
 import {GenerateRandomQuestion} from "./DataCreator.js"
+import { GenerateRandomDateQuestion } from "./DaysCreator.js";
 
 
 
@@ -24,12 +25,6 @@ function TrainContent() {
             setCorrectSound2(new Audio("/Correct2.mp3"));
         }
     }, []);
-
-
-
-
-
-
 
     const [req , setReq] = useState(0)
 
@@ -62,7 +57,12 @@ function TrainContent() {
                 const existingData = JSON.parse(localStorage.getItem("collectedData") || "[]");
 
                 // Create the new progress object
-                const newProgress = { speed, type , date , digit1 , digit2 , number };
+                let newProgress;
+                if(search.get("day") != true){
+                    newProgress = { speed, type , date , digit1 , digit2 , number };
+                }else{
+                    newProgress = {speed , type , date , digit:0 , digit2:0 , number:10}
+                }
 
                 // Merge the new progress with existing data
                 const mergedData = [...existingData, newProgress];
@@ -75,12 +75,23 @@ function TrainContent() {
     }
     };
 
+
+    useEffect(() => {
+        console.log(questions);
+    } , [questions])
+
     function questionGen()
     {
         let questions = [];
         for(let i = 0;i < parseInt(search.get("number")); i++){
-            questions.push(GenerateRandomQuestion(parseInt(search.get("digit1")) ,parseInt(search.get("digit2")) , parseInt(search.get("op")) ))
+            if(search.get("day") != "true"){
+                questions.push(GenerateRandomQuestion(parseInt(search.get("digit1")) ,parseInt(search.get("digit2")) , parseInt(search.get("op")) ))
+            }else{
+                console.log(GenerateRandomDateQuestion())
+                questions.push(GenerateRandomDateQuestion())
+            }
         }
+        console.log(questions)
         setQuestions(questions)
     }
 
@@ -92,6 +103,8 @@ function TrainContent() {
             setReq(searchReq)
         }
     } , [])
+
+
 
 
 
@@ -183,7 +196,7 @@ function TrainContent() {
 
         }else{
             errorSound.play();
-            saveProgress();
+            if(search.get("day") != "true") saveProgress()
             const endTime = performance.now()
             setCollectedData(prev => [...prev , {question:questions[currentContent] , takenTime:(endTime - startTime) , date:new Date(Date.now()) , type:questions[currentContent] , isRight:false}])
             let currentURL = encodeURIComponent(window.location.href)

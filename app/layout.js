@@ -25,7 +25,12 @@ export const metadata = {
     "speed math",
     "brain training",
     "math exercises",
-    "math"
+    "math",
+    "Calendar Trick",
+    "Days Trick",
+    "What Day of The Week was",
+    "Week" ,
+    "How To Know Which Day Of The Week Was"
   ],
   authors: [{ name: "BrainsMath Team" }],
   robots: "index, follow",

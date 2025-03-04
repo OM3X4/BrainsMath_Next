@@ -146,9 +146,8 @@ export function GenerateRandomQuestion(digits1, digits2, operation) {
 
 
     }
-
-
 }
+
 
 
 
