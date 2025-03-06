@@ -47,9 +47,33 @@ function NavBar() {
         <>
             <nav className=' flex items-center justify-between px-5 md:px-20 lg:px-32 flex-row h-20 dark:bg-navy transition-all'>
                 <div className=' flex items-center justify-between w-11/12'>
-                    <Link href={"/"} prefetch={true}><h1 className='text-2xl lg:text-4xl font-bold text-navy cursor-pointer dark:text-white transition-all'>BrainsMath</h1></Link>
+                    <Link href={"/"} prefetch={true}><h1 className='hidden md:block text-2xl lg:text-4xl font-bold text-navy cursor-pointer dark:text-white transition-all'>BrainsMath</h1></Link>
                     <div className='flex items-center justify-center gap-5'>
-                        <Link href="/train?day=true&number=10" className=' items-center justify-center cursor-pointer hidden lg:flex gap-2 dark:text-white transition-all hover:text-green dark:hover:text-green'>Days Trick<BsCalendarWeekFill /></Link>
+                        <div className="relative group flex items-center justify-center flex-col gap-2">
+                            {/* Trigger */}
+                            <div
+                                tabIndex="0"  // يجعل العنصر قابلاً للـ focus عند الضغط
+                                className="cursor-pointer flex gap-2 dark:text-white transition-all hover:text-green dark:hover:text-green items-center justify-center">
+                                DaysTrick <BsCalendarWeekFill />
+                            </div>
+
+                            {/* Dropdown */}
+                            <div className="absolute top-[100%] left-0 flex flex-col gap-1 bg-navy dark:bg-white p-2 rounded-lg shadow-md w-full z-50
+                                            md:opacity-0 pointer-events-none transition-all duration-300
+                                            group-hover:opacity-100 group-hover:pointer-events-auto
+                                            group-focus-within:opacity-100 group-focus-within:pointer-events-auto">
+                                <Link href="/lesson?index=10"
+                                    className="font-medium items-center justify-center cursor-pointer flex gap-2 dark:text-navy text-white transition-all hover:text-green dark:hover:text-green">
+                                    Learn
+                                </Link>
+                                <Link href="/train?day=true&number=10"
+                                    className="font-medium items-center justify-center cursor-pointer flex gap-2 dark:text-navy text-white transition-all hover:text-green dark:hover:text-green">
+                                    Practice
+                                </Link>
+                            </div>
+                        </div>
+
+
                         <Link href={"analyze"}><h5 className='cursor-pointer hidden lg:inline-block dark:text-white transition-all hover:text-green dark:hover:text-green'>Analyze</h5></Link>
                         <h5 className='cursor-pointer hidden lg:inline-block dark:text-white transition-all hover:text-green dark:hover:text-green' onClick={e => { handleStart(); }}>Your Plan</h5>
                         <Link href={"/trainsettings"} prefetch={true}><h5 className='cursor-pointer dark:text-white transition-all hover:text-green dark:hover:text-green'>Practice</h5></Link>

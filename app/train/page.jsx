@@ -17,6 +17,7 @@ function TrainContent() {
     const [correctSound , setCorrectSound] = useState(null);
     const [correctSound2 , setCorrectSound2] = useState(null);
 
+
     //import sounds
     useEffect(() => {
         if (typeof window !== 'undefined' && typeof Audio !== 'undefined') {
@@ -76,9 +77,7 @@ function TrainContent() {
     };
 
 
-    useEffect(() => {
-        console.log(questions);
-    } , [questions])
+
 
     function questionGen()
     {
@@ -97,12 +96,17 @@ function TrainContent() {
 
     //Generate Questions
     useEffect(() => {
+        setCollectedData([]);
+        setCurrentContent(0);
+        setProgress(0);
         questionGen();
         let searchReq = search.get("req")
         if(searchReq){
             setReq(searchReq)
         }
-    } , [])
+    } , [search])
+
+
 
 
 
@@ -220,7 +224,7 @@ function TrainContent() {
                 </div>
                 <div>
                     {/* numbers */}
-                    <div className=' text-8xl mb-10 font-bold text-navy text-center dark:text-white '>
+                    <div className='text-4xl md:text-8xl mb-10 font-bold text-navy text-center dark:text-white '>
                         {questions[currentContent].question}
                     </div>
                     {/* choice */}
@@ -229,7 +233,7 @@ function TrainContent() {
                             questions[currentContent].choices?
                             questions[currentContent].choices.map((choice , i) => {
                                 return(
-                                    <div key={i} className='text-center mt-10 bg-green dark:bg-lightNavy py-5 px-12 text-white rounded-2xl text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button dark:hover:brightness-125'
+                                    <div key={i} className='text-center mt-5 md:mt-10 bg-green dark:bg-lightNavy py-4 md:py-5 px-6 md:px-12 text-white rounded-2xl text-2xl md:text-4xl shadow-[4px_4px_0_rgb(60,100,180)] transition-all duration-150 hover:bg-lightNavy cursor-pointer coin-button dark:hover:brightness-125'
                                     onClick={e => handleClick(choice , questions[currentContent].answer)}>
                                         {choice}
                                     </div>

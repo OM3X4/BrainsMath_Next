@@ -242,4 +242,43 @@ export const Data = [
         ],
         type:"lesson",
     },
+    // Doom Day
+    {
+        content: [
+            {
+                numbers: "",
+                text: "Now We Are Going To Learn About **Doom's Day** Calculations!"
+            },
+            {
+                numbers: "",
+                text: "Doom's Day is a method to determine the day of the week for any given date. Let's break it down step by step."
+            },
+            {
+                numbers: "",
+                text: "4/4, 6/6, 8/8, 10/10, 12/12, 9/5, 5/9, 7/11, 11/7, 1/(3 or 4 for leap year), 2/(28 or 29), 3/14\nThese Dates Are The Same WeekDay For Every Year"
+            },
+            {
+                numbers: "",
+                text: "Next, let's learn how to find the **Doom's Day** for any year.\nThere is a cycle to know the Doom's Day of every first year of the century: **Friday ⇒ Wednesday ⇒ Tuesday ⇒ Sunday**. We start at 1800 (Friday)."
+            },
+            {
+                numbers: "",
+                text: "For example, we know that the Doom's Day in the year 2000 was **Tuesday**.\nEvery year, the Doom's Day increases by one. For leap years, it increases twice."
+            },
+            {
+                numbers: "",
+                text: "Let's take an example: To find the Doom's Day in the year 1963:\n1. The Doom's Day in 1900 was **Wednesday** (we know this).\n2. Add the year (63) + year / 4 (15) which is 78.\n3. Calculate 78 % 7 = 1, then add this to Wednesday to get **Thursday**."
+            },
+            {
+                numbers: "",
+                text: "From here, we can obtain the exact date by using the Doom's Days we memorized earlier.\nFinally, remember that years like 28, 56, and 84 of any century have the same Doom's Day as the first year of the century."
+            },
+            {
+                numbers: "",
+                text: "**Practice Makes Perfect**! Try calculating the Doom's Day for different years and dates.",
+                link: "train?doomsday=1"
+            }
+        ],
+        type: "lesson"
+    }
 ]

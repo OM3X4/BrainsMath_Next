@@ -137,8 +137,8 @@ function LessonContent() {
                         router.push(`/lessonfinisher?link=/practice?index=${currentLessonIndex + 1}`)
                     }
                 }else{
-                    router.prefetch('/cong')
-                    router.push('/cong')
+                    router.prefetch('/')
+                    router.push('/')
                 }
             }
         } else {
@@ -157,7 +157,7 @@ function LessonContent() {
             {lesson ? <div className='flex items-center justify-center h-[calc(80vh-5rem)]'>
                 <div>
                     {/* numbers */}
-                    <div className='text-5xl md:text-8xl mb-10 font-bold text-navy text-center'>
+                    <div className='text-5xl md:text-8xl mb-10 font-bold text-navy text-center dark:text-white'>
                         {HighlightText(lesson.content[currentContent].numbers)}
                     </div>
                     {/* main text */}
