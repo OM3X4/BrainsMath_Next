@@ -52,14 +52,14 @@ function NavBar() {
                         <div className="relative group flex items-center justify-center flex-col gap-2">
                             {/* Trigger */}
                             <div
-                                tabIndex="0"  // يجعل العنصر قابلاً للـ focus عند الضغط
+                                tabIndex="0"
                                 className="cursor-pointer flex gap-2 dark:text-white transition-all hover:text-green dark:hover:text-green items-center justify-center">
                                 DaysTrick <BsCalendarWeekFill />
                             </div>
 
                             {/* Dropdown */}
                             <div className="absolute top-[100%] left-0 flex flex-col gap-1 bg-navy dark:bg-white p-2 rounded-lg shadow-md w-full z-50
-                                            md:opacity-0 pointer-events-none transition-all duration-300
+                                            opacity-0 pointer-events-none transition-all duration-300
                                             group-hover:opacity-100 group-hover:pointer-events-auto
                                             group-focus-within:opacity-100 group-focus-within:pointer-events-auto">
                                 <Link href="/lesson?index=10"
